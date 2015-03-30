@@ -1,0 +1,40 @@
+<div class="modal" id="details">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Attendance for <span class="text-capitalize">{{ eventDetail.name }}</span></h2>
+				<form name="AttForm" ng-submit="addAtt()" class="form-inline">
+					<div class="form-group">
+						<input class="form-control input-sm" placeholder="Serial No" required ng-model="serial_no" name="serial_no">
+						<input class="btn btn-warning btn-sm" value="Add Student" type="submit">
+					</div>
+				</form>
+			</div>
+			<div class="modal-body">
+				<table class="table" ng-show="att">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Matric No</th>
+							<th>Time In</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="student in att">
+							<td>{{ student.fullname }}</td>
+							<td>{{ student.matrix_no }}</td>
+							<td>{{ student.time_reg }}</td>
+							<td><button ng-click="delete($index)" class="btn btn-danger btn-xs">Remove</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" ng-if="type == 'student'" ng-click="updateStudent(currS)">Update Student</button>
+				<button type="button" class="btn btn-success" ng-if="type == 'event'" ng-click="updateEvent(currS)">Update Event</button>
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" class="btn">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

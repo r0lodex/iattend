@@ -31,6 +31,12 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				modal.element.modal();
 			})
 		};
+
+		$rootScope.afields = function(eventID, serialNo) {
+			this.eventid = eventID;
+			this.serial_no = serialNo;
+			this.attendance = true;
+		}
 	})
 /*
  	ROUTE CONFIGURATION
@@ -150,7 +156,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 // -------------------------
 // EVENTS
-	.controller('eventsController', function($scope, $http, $rootScope, EventsData, AttendanceData) {
+	.controller('eventsController', function($scope, $http, $rootScope, EventsData, AttendanceData, ModalService) {
 		EventsData.then(function(res) {
 			$scope.eventList = res;
 		});
@@ -186,9 +192,25 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			}
 		}
 
+		$scope.showAtt = false;
+		$scope.selected = '';
+
 		$scope.viewAttendees = function(eventID) {
-			console.log(eventID)
+			$scope.selected = eventID;
+			$scope.showAtt = true;
 		}
+
+		$scope.attendanceModal = function(record) {
+			ModalService.showModal({
+				templateUrl: 'templates/modal2.html',
+				controller: "attendanceController",
+				inputs: {
+					currentRecord: record
+				}
+			}).then(function(modal) {
+				modal.element.modal();
+			})
+		};
 	})
 
 // -------------------------
@@ -230,3 +252,44 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			);
 		}
 	})
+	.controller('attendanceController', function($rootScope, $scope, $http, AttendanceData, currentRecord) {
+		$scope.eventDetail = currentRecord
+		$http.get('../php/router.php?attendance=1&id='+currentRecord.id).success(function(res) {
+			$scope.att = res
+		})
+
+		$scope.addAtt = function() {
+			$scope.newentry = new $rootScope.afields(currentRecord.id, $scope.serial_no)
+
+			console.log($scope.newentry)
+
+			$http.post('../php/router.php', $scope.newentry).success(function(res) {
+				console.log(res)
+				$http.get('../php/router.php?attendance=1&id='+currentRecord.id).success(function(ress) {
+					$scope.att = []
+					$scope.att = ress
+				})
+			})
+		}
+
+		$scope.delete = function(index) {
+			var a = confirm('Confirm remove from attendance list?');
+			if(a) {
+				var del = $scope.att[index];
+					del.attendance = true;
+					del.delete = true;
+
+				console.log(del)
+
+				$http.post('../php/router.php', del)
+					.success(function(res){
+						$scope.att.splice(index,1)
+						console.log(res)
+					}
+				);
+			}
+		}
+	})
+
+
+
