@@ -5,6 +5,10 @@ if(!isset($_SESSION)) {	session_start(); }
 // database connection function
 include('database.php');
 
+$json = json_encode($HTTP_RAW_POST_DATA);
+$obj = json_decode($json);
+
+
 //process student req
 if( isset($_GET['student']) ){
 	include 'student.php';
