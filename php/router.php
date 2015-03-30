@@ -5,25 +5,24 @@ if(!isset($_SESSION)) {	session_start(); }
 // database connection function
 include('database.php');
 
-$json = json_encode($HTTP_RAW_POST_DATA);
-$obj = json_decode($json);
-
+$json = file_get_contents("php://input");
+$post = json_decode($json,true);
 
 //process student req
 if( isset($_GET['student']) ){
 	include 'student.php';
 	studentRead($_GET);
 }
-if( isset($_POST['student']) ) {
+if( isset($post) ) {
 	include 'student.php';
-	if(isset($_POST['id'])) {
-		if(isset($_POST['delete'])) {
-			studentDelete($_POST);
+	if(isset($post['id'])) {
+		if(isset($post['delete'])) {
+			studentDelete($post);
 		}else{
-			studentUpdate($_POST);
+			studentUpdate($post);
 		}
 	}else{
-		studentCreate($_POST);
+		studentCreate($post);
 	}
 }
 
@@ -32,16 +31,16 @@ if( isset($_GET['event']) ){
 	include 'event.php';
 	eventRead($_GET);
 }
-if( isset($_POST['event']) ) {
+if( isset($post['event']) ) {
 	include 'event.php';
-	if(isset($_POST['id'])) {
-		if(isset($_POST['delete'])) {
-			eventDelete($_POST);
+	if(isset($post['id'])) {
+		if(isset($post['delete'])) {
+			eventDelete($post);
 		}else{
-			eventUpdate($_POST);
+			eventUpdate($post);
 		}
 	}else{
-		studentCreate($_POST);
+		studentCreate($post);
 	}
 }
 
@@ -50,16 +49,16 @@ if( isset($_GET['attendance']) ){
 	include 'attendance.php';
 	attendanceRead($_GET);
 }
-if( isset($_POST['attendance']) ) {
+if( isset($post['attendance']) ) {
 	include 'attendance.php';
-	if(isset($_POST['id'])) {
-		if(isset($_POST['delete'])) {
-			attendanceDelete($_POST);
+	if(isset($post['id'])) {
+		if(isset($post['delete'])) {
+			attendanceDelete($post);
 		}else{
-			attendanceUpdate($_POST);
+			attendanceUpdate($post);
 		}
 	}else{
-		attendanceCreate($_POST);
+		attendanceCreate($post);
 	}
 }
 
