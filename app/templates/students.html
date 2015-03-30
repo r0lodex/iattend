@@ -42,7 +42,7 @@
 						<td>{{ student.ic }}</td>
 						<td>
 							<button ng-click="edit(student.id)" class="btn btn-default btn-xs">Edit</button>
-							<button ng-click="delete(student.id)" class="btn btn-danger btn-xs">Delete</button>
+							<button ng-click="delete($index)" class="btn btn-danger btn-xs">Delete</button>
 						</td>
 					</tr>
 				</tbody>
