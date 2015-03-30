@@ -2,7 +2,7 @@
 function attendanceCreate($input) {
 	// process input data
 	$a = (isset($input['serial_no'])) ? $input['serial_no']:null;
-	$b = (isset($input['id'])) ? $input['id']:null;
+	$b = (isset($input['eventid'])) ? $input['eventid']:null;
 
 	// create an array of data
 	$data = array(
