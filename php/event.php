@@ -27,7 +27,7 @@ function eventRead($input){
 	if($input == 'ret'){
 		return $rows;
 	}
-	echo $rows;
+	echo json_encode($rows);
 }
 
 function eventDelete($input){
