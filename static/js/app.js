@@ -35,7 +35,7 @@ var iattend = angular.module('iattend', ['ngRoute'])
 	.factory('StudentsData', function($http, $q) {
 		var deferred = $q.defer();
 
-		$http.get('../php/router.php?student=1&action=read')
+		$http.get('../php/router.php?student=true')
 			.success(function(response) {
 				deferred.resolve(response);
 			}
@@ -47,7 +47,7 @@ var iattend = angular.module('iattend', ['ngRoute'])
 	.factory('EventsData', function($http, $q) {
 		var deferred = $q.defer();
 
-		$http.get('../php/router.php?event=1&action=read')
+		$http.get('../php/router.php?event=1')
 			.success(function(response) {
 				deferred.resolve(response);
 			}
@@ -59,7 +59,7 @@ var iattend = angular.module('iattend', ['ngRoute'])
 	.factory('AttendanceData', function($http, $q) {
 		var deferred = $q.defer();
 
-		$http.get('../php/router.php?attendance=1&action=read')
+		$http.get('../php/router.php?attendance=1')
 			.success(function(response) {
 				deferred.resolve(response);
 			}
@@ -98,8 +98,13 @@ var iattend = angular.module('iattend', ['ngRoute'])
 			$scope.studentfields.fullname = $scope.fullname
 			$scope.studentfields.matrix_no = $scope.matrix_no
 
-			$http.post('../php/router.php?student=1', $scope.studentfields)
+			$scope.studentfields.student = true;
+
+			console.log($scope.studentfields)
+
+			$http.post('../php/router.php', $scope.studentfields)
 				.success(function(res) {
+					console.log(res)
 					$scope.studentList.push($scope.studentfields)
 				}
 			);
@@ -110,9 +115,12 @@ var iattend = angular.module('iattend', ['ngRoute'])
 				var del = $scope.studentList[student];
 					del.delete = true;
 
-				$http.post('../php/router.php?student=1', del)
+				console.log(del)
+
+				$http.post('../php/router.php', del)
 					.success(function(res){
 						$scope.studentList.splice(student,1)
+						console.log(res)
 					}
 				);
 			}
