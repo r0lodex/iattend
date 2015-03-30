@@ -13,7 +13,7 @@ if( isset($_GET['student']) ){
 	include 'student.php';
 	studentRead($_GET);
 }
-if( isset($post) ) {
+if( isset($post['student']) ) {
 	include 'student.php';
 	if(isset($post['id'])) {
 		if(isset($post['delete'])) {
