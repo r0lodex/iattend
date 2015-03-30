@@ -1,30 +1,25 @@
 <?php
-
-include('database.php');
-
 function studentCreate($input){
 	// process inpput data
-	$a = (isset($input['name'])) ? $input['name']:null;
-	$b = (isset($input['icno'])) ? $input['icno']:null;
-	$c = (isset($input['matrix'])) ? $input['matrix']:null;
-	$d = (isset($input['serial'])) ? $input['serial']:null;
+	$a = (isset($input['fullname'])) ? $input['fullname']:null;
+	$b = (isset($input['ic'])) ? $input['ic']:null;
+	$c = (isset($input['matrix_no'])) ? $input['matrix_no']:null;
+	$d = (isset($input['serial_no'])) ? $input['serial_no']:null;
 
 	// create an array of data
 	$data = array(
-		'a' => $input['name'],
-		'b' => $input['icno'],
-		'c' => $input['matrix'],
-		'd' => $input['serial']
+		'a' => $input['fullname'],
+		'b' => $input['ic'],
+		'c' => $input['matrix_no'],
+		'd' => $input['serial_no']
 	);
 
 	// prepare database query
-	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) vALUES (:a,:b,:c,:d)";
-	$dbc = Database::connect();
+	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES (:a,:b,:c,:d)";
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function studentRead($input){
@@ -38,13 +33,13 @@ function studentRead($input){
 
 	// prepare database query
 	$sql = ($a == null || $a == 0) ? "SELECT * FROM student" : "SELECT * FROM student WHERE id=:a";
-	$dbc = Database::connect();
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 	$dbc = null;
 
-	return array($rows);
+	return $rows;
 }
 
 function studentUpdate($input){
@@ -71,7 +66,7 @@ function studentUpdate($input){
 
 	// prepare database query
 	$sql = "UPDATE student SET fullname=IFNULL(:a,fullname), ic=IFNULL(:b,ic), matrix_no=IFNULL(:c,matrix_no), serial_no=IFNULL(:d,serial_no) WHERE id=:e";
-	$dbc = Database::connect();
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 
@@ -90,11 +85,10 @@ function studentDelete($input){
 
 	// prepare database query
 	$sql = "DELETE FROM student WHERE id=:a";
-	$dbc = Database::connect();
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
 
 	return array();
 }
-

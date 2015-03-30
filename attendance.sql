@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-03-30 16:54:35
+Date: 2015-03-30 21:41:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,8 +48,8 @@ CREATE TABLE `event` (
 -- ----------------------------
 -- Records of event
 -- ----------------------------
-INSERT INTO `event` VALUES ('1', 'ceramah', 'minggu orientasi', 'dewan', '2015-03-08', '336:00:00');
-INSERT INTO `event` VALUES ('2', 'bengkel', 'kerja kumpulan', 'makmal', '2015-03-19', '384:00:00');
+INSERT INTO `event` VALUES ('1', 'ceramah', 'minggu orientasi', 'dewan', '2015-03-08', '19:00:00');
+INSERT INTO `event` VALUES ('2', 'bengkel', 'kerja kumpulan', 'makmal', '2015-03-19', '21:00:00');
 
 -- ----------------------------
 -- Table structure for student
