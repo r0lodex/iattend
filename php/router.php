@@ -2,28 +2,6 @@
 //start session is not exists
 if(!isset($_SESSION)) {	session_start(); }
 
-//system access check
-if(isset($_GET['login'])){
-	$username = $_GET['username'];
-	$password = $_GET['password'];
-
-	if($username == 'admin' && $password == 'admin'){
-		$_SESSION['authorized'] = true;
-	}
-}
-if(isset($_GET['logout'])) {
-	unset($_SESSION);
-	session_destroy();
-}
-
-// check authorization
-if(!isset($_SESSION['authorized'])){
-	$response = array('auth'=>false);
-}else{
-	$response = array('auth'=>true);
-}
-
-
 //process student req
 if( isset($_GET['student']) || isset($_POST['student']) ) {
 	include 'student.php';
@@ -82,6 +60,29 @@ if( isset($_GET['attendance']) || isset($_POST['attendance']) ) {
 		break;
 	}
 }
+
+
+//system access check
+if(isset($_POST['login'])){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+	if($username == 'admin' && $password == 'admin'){
+		$_SESSION['authorized'] = true;
+	}
+}
+if(isset($_GET['logout'])) {
+	unset($_SESSION);
+	session_destroy();
+}
+
+// check authorization
+if(!isset($_SESSION['authorized'])){
+	$response = array('auth'=>false);
+}else{
+	$response = array('auth'=>true);
+}
+
 
 //return json array
 echo json_encode($response);
