@@ -1,5 +1,6 @@
 <?php
 function studentCreate($input){
+	var_dump($input);
 	// process inpput data
 	$a = (isset($input['fullname'])) ? $input['fullname']:null;
 	$b = (isset($input['ic'])) ? $input['ic']:null;
