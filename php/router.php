@@ -57,7 +57,7 @@ if( isset($_GET['attendance']) || isset($_POST['attendance']) ) {
 	include 'attendance.php';
 	switch($_GET['action']){
 		case 'create':
-			$response = attendanceCreate($_GET);
+			$response = attendanceCreate($_POST);
 		break;
 
 		case 'read':
