@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-03-31 01:30:03
+Date: 2015-03-31 03:03:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,13 +25,14 @@ CREATE TABLE `attendance` (
   `event_id` int(11) DEFAULT NULL,
   `time_reg` time DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
 
 -- ----------------------------
 -- Records of attendance
 -- ----------------------------
-INSERT INTO `attendance` VALUES ('1', '1', '1', '01:07:39');
-INSERT INTO `attendance` VALUES ('2', '1', '2', '01:07:39');
+INSERT INTO `attendance` VALUES ('3', '2', '2', '18:06:16');
+INSERT INTO `attendance` VALUES ('4', '2', '1', '18:44:02');
+INSERT INTO `attendance` VALUES ('5', '1', '1', '18:44:25');
 
 -- ----------------------------
 -- Table structure for event
@@ -45,7 +46,7 @@ CREATE TABLE `event` (
   `day` date DEFAULT NULL,
   `time` time DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of event
@@ -66,7 +67,7 @@ CREATE TABLE `student` (
   `matrix_no` varchar(25) DEFAULT NULL,
   `serial_no` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of student
