@@ -69,14 +69,6 @@ function studentUpdate($input){
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
-
-	/*$sql = "SELECT * FROM student WHERE id=:e";
-	$qry = $dbc->prepare($sql);
-	$qry->execute(array('e'=>$e));
-	$row = $qry->fetch(PDO::FETCH_ASSOC);
-	$dbc = null;*/
-
-	return array();
 }
 
 function studentDelete($input){

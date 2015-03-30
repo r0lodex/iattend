@@ -15,8 +15,6 @@ function eventCreate($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function eventRead($input){
@@ -39,8 +37,6 @@ function eventDelete($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function eventUpdate($input){
@@ -60,8 +56,6 @@ function eventUpdate($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function eventList(){
