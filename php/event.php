@@ -19,7 +19,7 @@ function eventCreate($input){
 }
 
 function eventRead($input){
-	$sql = "SELECT * FROM event";
+	$sql = "SELECT id,`name`,descp,venue,DATE_FORMAT(`day`,'%d %M %Y') AS day,TIME_FORMAT(`time`,'%l:%i %p') AS time FROM event";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute();
@@ -68,8 +68,8 @@ function eventList(){
 	foreach($res as $row){
 		$buff.="<tr>
 		<td><p><strong>".$row['name']."</strong><br><small class=\"text-muted\">".$row['descp']."</small></p></td>
-		<td><code class=\"bg-success text-info\">".date('d M Y',strtotime($row['day']))."</code></td>
-		<td><code class=\"bg-info text-success\">".date('g:ia',strtotime($row['time']))."</code></td>
+		<td><code class=\"bg-success text-info\">".$row['day']."</code></td>
+		<td><code class=\"bg-info text-success\">".$row['time']."</code></td>
 		<td>".$row['venue']."</td></tr>";
 	}
 	echo $buff;
