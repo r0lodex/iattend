@@ -5,6 +5,7 @@ if(!isset($_SESSION)) {	session_start(); }
 // database connection function
 include('database.php');
 
+
 $json = file_get_contents("php://input");
 $post = json_decode($json,true);
 
