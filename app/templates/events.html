@@ -17,45 +17,29 @@
 			</div>
 			<div class="form-group">
 				<label>Event Date</label>
-				<input class="form-control" name="day" ng-model="day" required>
+				<input class="form-control" name="day" ng-model="day" required type="date">
 			</div>
 			<div class="form-group">
 				<label>Event Time</label>
-				<input class="form-control" name="time" ng-model="time" required>
+				<input class="form-control" name="time" ng-model="time" required type="time">
 			</div>
 			<input type="submit" class="btn btn-primary" value="Add Event" required>
 		</form>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-8">
 		<h4>Event Listing</h4>
 		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="event in eventList" >
+			<li ng-class="{actives: $index != selected}" class="list-group-item" ng-repeat="event in eventList" >
 				<h4 class="text-capitalize">{{ event.name }}</h4>
 				<p><small class="text-muted">{{ event.descp }}</small></p>
 				<p>
 					<strong>Venue</strong> &raquo; {{ event.venue }}<br>
 					<strong>Date &amp; Time</strong> &raquo; {{ event.day }} @ {{ event.time }}<br>
 				</p>
-				<button class="pull-right btn btn-info btn-xs" ng-click="viewAttendees(event.id)">View Attendees &rarr;</button>
+				<button class="pull-right btn btn-info btn-xs" ng-click="attendanceModal(event)">Attendance &rarr;</button>
 				<button class="btn btn-default btn-xs" ng-click="showModal('event', $index)">Edit</button>
 				<button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>
 			</li>
 		</ul>
-	</div>
-	<div class="col-md-4">
-		<h4>Attendees for Ceramah Perdana</h4>
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Matric No</th>
-						<th>&nbsp;</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>
 	</div>
 </div>
