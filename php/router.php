@@ -54,8 +54,6 @@ if( isset($post['attendance']) ) {
 	if(isset($post['id'])) {
 		if(isset($post['delete'])) {
 			attendanceDelete($post);
-		}else{
-			attendanceUpdate($post);
 		}
 	}else{
 		attendanceCreate($post);
