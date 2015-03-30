@@ -5,6 +5,8 @@ if(!isset($_SESSION)) {	session_start(); }
 // database connection function
 include('database.php');
 
+// init response array
+$response = array();
 
 //process student req
 if( isset($_GET['student']) || isset($_POST['student']) ) {
@@ -74,9 +76,9 @@ if( isset($_GET['attendance']) || isset($_POST['attendance']) ) {
 if(isset($_POST['login'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-
 	if($username == 'admin' && $password == 'admin'){
 		$_SESSION['authorized'] = true;
+		header('Location: ../app');
 	}
 }
 if(isset($_GET['logout'])) {
@@ -84,15 +86,6 @@ if(isset($_GET['logout'])) {
 	session_destroy();
 	header('Location: ../');
 }
-
-// check authorization
-if(!isset($_SESSION['authorized'])){
-	$response['auth'] = false;
-}else{
-	$response['auth'] = true;
-	header('Location: ../app');
-}
-
 
 //return json array
 echo json_encode($response);
