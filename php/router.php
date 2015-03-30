@@ -40,7 +40,7 @@ if( isset($post['event']) ) {
 			eventUpdate($post);
 		}
 	}else{
-		studentCreate($post);
+		eventCreate($post);
 	}
 }
 

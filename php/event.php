@@ -1,5 +1,6 @@
 <?php
 function eventCreate($input){
+	var_dump($input);
 	// crete an array of data from input
 	$data = array(
 		'a' => $input['name'],
@@ -54,7 +55,7 @@ function eventUpdate($input){
 	);
 
 	// prepare database query
-	$sql = "UPDATE event SET name=IFNOT(:a,name), descp=IFNOT(:b,name), vanue=IFNOT(:c,name), day=IFNOT(:d,day), time=IFNOT(:e,time) WHERE id=:f";
+	$sql = "UPDATE event SET name=IFNULL(:a,name), descp=IFNULL(:b,name), venue=IFNULL(:c,name), day=IFNULL(:d,day), time=IFNULL(:e,time) WHERE id=:f";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
