@@ -24,7 +24,10 @@ function eventRead($input){
 	$qry->execute();
 	$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 	$dbc = null;
-	return $rows;
+	if($input == 'ret'){
+		return $rows;
+	}
+	echo $rows;
 }
 
 function eventDelete($input){
@@ -60,7 +63,7 @@ function eventUpdate($input){
 
 function eventList(){
 	$buff = '';
-	$res = eventRead(null);
+	$res = eventRead('ret');
 	foreach($res as $row){
 		$buff.="<tr>
 		<td><p><strong>".$row['name']."</strong><br><small class=\"text-muted\">".$row['descp']."</small></p></td>
