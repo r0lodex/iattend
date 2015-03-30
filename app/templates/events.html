@@ -29,15 +29,16 @@
 	<div class="col-md-4">
 		<h4>Event Listing</h4>
 		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="event in eventList" ng-click="viewAttendees">
+			<li class="list-group-item" ng-repeat="event in eventList" >
 				<h4 class="text-capitalize">{{ event.name }}</h4>
 				<p><small class="text-muted">{{ event.descp }}</small></p>
 				<p>
 					<strong>Venue</strong> &raquo; {{ event.venue }}<br>
 					<strong>Date &amp; Time</strong> &raquo; {{ event.day }} @ {{ event.time }}<br>
 				</p>
+				<button class="pull-right btn btn-info btn-xs" ng-click="viewAttendees(event.id)">View Attendees &rarr;</button>
 				<button class="btn btn-default btn-xs" ng-click="showModal('event', $index)">Edit</button>
-				<button class="btn btn-danger btn-xs">Delete</button>
+				<button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>
 			</li>
 		</ul>
 	</div>

@@ -167,6 +167,28 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				}
 			);
 		};
+
+		$scope.delete = function(index) {
+			var a = confirm('Confirm Delete?');
+			if(a) {
+				var del = $scope.eventList[index];
+					del.event = true;
+					del.delete = true;
+
+				console.log(del)
+
+				$http.post('../php/router.php', del)
+					.success(function(res){
+						$scope.eventList.splice(index,1)
+						console.log(res)
+					}
+				);
+			}
+		}
+
+		$scope.viewAttendees = function(eventID) {
+			console.log(eventID)
+		}
 	})
 
 // -------------------------
@@ -190,6 +212,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			data.student = true;
 			$http.post('../php/router.php', data)
 				.success(function(res) {
+					alert('Student data successfully updated');
 					console.log(data)
 					console.log(res)
 				}
@@ -200,6 +223,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			data.event = true;
 			$http.post('../php/router.php', data)
 				.success(function(res) {
+					alert('Event data successfully updated');
 					console.log(data)
 					console.log(res)
 				}
