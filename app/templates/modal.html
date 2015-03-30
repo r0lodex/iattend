@@ -23,6 +23,27 @@
 				</form>
 				<!-- Event Form -->
 				<form name="studentForm"  ng-if="type == 'event'">
+					<div class="form-group">
+						<label>Event Name</label>
+						<input type="text" class="form-control" name="name" ng-model="currS.name" required>
+					</div>
+					<div class="form-group">
+						<label>Event Name</label>
+						<input type="text" class="form-control" name="descp" ng-model="currS.descp" required>
+					</div>
+					<div class="form-group">
+						<label>Event Name</label>
+						<input type="text" class="form-control" name="venue" ng-model="currS.venue" required>
+					</div>
+					<div class="form-group">
+						<label>Event Name</label>
+						<input type="text" class="form-control" name="day" ng-model="currS.day" required>
+					</div>
+					<div class="form-group">
+						<label>Event Name</label>
+						<input type="text" class="form-control" name="time" ng-model="currS.time" required>
+					</div>
+				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" ng-if="type == 'student'" ng-click="updateStudent(currS)">Update Student</button>
