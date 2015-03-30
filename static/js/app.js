@@ -84,7 +84,7 @@ var iattend = angular.module('iattend', ['ngRoute'])
 		$scope.studentList = [];
 
 		var fields = function(){
-			this.ic_no = '';
+			this.ic = '';
 			this.serial_no = '';
 			this.fullname = '';
 			this.matrix_no = '';
@@ -95,7 +95,7 @@ var iattend = angular.module('iattend', ['ngRoute'])
 
 		$scope.createStudent = function() {
 			$scope.studentfields = new fields();
-			$scope.studentfields.ic_no = $scope.ic_no
+			$scope.studentfields.ic = $scope.ic
 			$scope.studentfields.serial_no = $scope.serial_no
 			$scope.studentfields.fullname = $scope.fullname
 			$scope.studentfields.matrix_no = $scope.matrix_no

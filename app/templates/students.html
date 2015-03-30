@@ -9,7 +9,7 @@
 			</div>
 			<div class="form-group">
 				<label>IC No</label>
-				<input type="text" class="form-control" name="ic_no" ng-model="ic_no" required>
+				<input type="text" class="form-control" name="ic_no" ng-model="ic" required>
 			</div>
 			<div class="form-group">
 				<label>Matric No</label>
@@ -39,7 +39,7 @@
 						<td>{{ student.serial_no }}</td>
 						<td>{{ student.fullname }}</td>
 						<td>{{ student.matrix_no }}</td>
-						<td>{{ student.ic_no }}</td>
+						<td>{{ student.ic }}</td>
 						<td>
 							<button ng-click="edit(student.id)" class="btn btn-default btn-xs">Edit</button>
 							<button ng-click="delete(student.id)" class="btn btn-danger btn-xs">Delete</button>
