@@ -1,0 +1,10 @@
+.table thead th {
+	font-family: 'Menlo', monospace;
+	font-weight: normal;
+	font-size: 0.8em;
+	color: #999;
+	text-transform: uppercase;
+}
+.table tbody td:first-child {
+	max-width: 400px;
+}
