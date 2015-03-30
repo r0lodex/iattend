@@ -2,19 +2,42 @@
 <hr>
 <div class="row">
 	<div class="col-md-4">
-		<form class="bg-success" style="padding: 20px; border-radius:5px;"></form>
+		<form name="eventForm" ng-submit="addEvent()" class="bg-success" style="padding: 20px; border-radius:5px;">
+			<div class="form-group">
+				<label>Event Name</label>
+				<input class="form-control" name="name" ng-model="name" required>
+			</div>
+			<div class="form-group">
+				<label>Event Description</label>
+				<input class="form-control" name="descp" ng-model="descp" required>
+			</div>
+			<div class="form-group">
+				<label>Venue</label>
+				<input class="form-control" name="venue" ng-model="venue" required>
+			</div>
+			<div class="form-group">
+				<label>Event Date</label>
+				<input class="form-control" name="day" ng-model="day" required>
+			</div>
+			<div class="form-group">
+				<label>Event Time</label>
+				<input class="form-control" name="time" ng-model="time" required>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Add Event" required>
+		</form>
 	</div>
 	<div class="col-md-4">
 		<h4>Event Listing</h4>
 		<ul class="list-group">
-			<li class="list-group-item">
-				<h4>Ceramah Perdana</h4>
-				<p><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, explicabo.</small></p>
+			<li class="list-group-item" ng-repeat="event in eventList" ng-click="viewAttendees">
+				<h4 class="text-capitalize">{{ event.name }}</h4>
+				<p><small class="text-muted">{{ event.descp }}</small></p>
 				<p>
-					<strong>Venue</strong> &raquo; Stadium Melawati<br>
-					12 Jun 2015 @ 5.30pm<br>
-					Attendees: 12
+					<strong>Venue</strong> &raquo; {{ event.venue }}<br>
+					<strong>Date &amp; Time</strong> &raquo; {{ event.day }} @ {{ event.time }}<br>
 				</p>
+				<button class="btn btn-default btn-xs" ng-click="showModal('event', $index)">Edit</button>
+				<button class="btn btn-danger btn-xs">Delete</button>
 			</li>
 		</ul>
 	</div>

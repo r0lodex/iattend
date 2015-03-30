@@ -2,7 +2,8 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-body">
-				<form name="studentForm" ng-submit="createStudent()">
+				<!-- Student Form -->
+				<form name="studentForm" ng-if="type == 'student'">
 					<div class="form-group">
 						<label>Name</label>
 						<input type="text" class="form-control" name="fullname" ng-model="currS.fullname" required>
@@ -20,9 +21,12 @@
 						<input type="text" class="form-control" name="serial_no" ng-model="currS.serial_no" required>
 					</div>
 				</form>
+				<!-- Event Form -->
+				<form name="studentForm"  ng-if="type == 'event'">
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success" ng-click="updateStudent(currS)">Update Student</button>
+				<button type="button" class="btn btn-success" ng-if="type == 'student'" ng-click="updateStudent(currS)">Update Student</button>
+				<button type="button" class="btn btn-success" ng-if="type == 'event'" ng-click="updateEvent(currS)">Update Event</button>
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" class="btn">Close</button>
 			</div>
 		</div>

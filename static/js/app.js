@@ -1,14 +1,36 @@
 var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
-	.run(function($rootScope) {
-		console.log('Started!')
+	.run(function($rootScope, ModalService) {
+		console.log('App Started!')
 
+		// Default fields for Events
 		$rootScope.sfields = function(ic, serial, name, matrix){
 			this.ic = ic;
 			this.serial_no = serial;
 			this.fullname = name;
 			this.matrix_no = matrix;
+			this.student = true;
 		}
-
+		// Default fields for Events
+		$rootScope.efields = function(name, desc, venue, date, time){
+			this.name = name;
+			this.descp = desc;
+			this.venue = venue;
+			this.day = date;
+			this.time = time;
+			this.event = true;
+		}
+		$rootScope.showModal = function(type, record) {
+			ModalService.showModal({
+				templateUrl: 'templates/modal.html',
+				controller: "modalController",
+				inputs: {
+					type : type,
+					currentRecord: record
+				}
+			}).then(function(modal) {
+				modal.element.modal();
+			})
+		};
 	})
 /*
  	ROUTE CONFIGURATION
@@ -87,7 +109,9 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 	    }
 	})
 
-	.controller('studentsController', function($rootScope, $scope, $http, StudentsData, ModalService) {
+// -------------------------
+// STUDENTS
+	.controller('studentsController', function($rootScope, $scope, $http, StudentsData) {
 
 		StudentsData.then(function(res) {
 			$scope.studentList = res;
@@ -95,7 +119,6 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 		$scope.createStudent = function() {
 			$scope.studentfields = new $rootScope.sfields($scope.ic, $scope.serial_no, $scope.fullname, $scope.matrix_no);
-			$scope.studentfields.student = true;
 
 			console.log($scope.studentfields)
 
@@ -123,34 +146,63 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				);
 			}
 		}
-		$scope.showModal = function(record) {
-			ModalService.showModal({
-				templateUrl: 'templates/modal.html',
-				controller: "modalController",
-				inputs: {
-					currentStudent: record
+	})
+
+// -------------------------
+// EVENTS
+	.controller('eventsController', function($scope, $http, $rootScope, EventsData, AttendanceData) {
+		EventsData.then(function(res) {
+			$scope.eventList = res;
+		});
+
+		$scope.addEvent = function() {
+			$scope.eventfields = new $rootScope.efields($scope.name, $scope.descp, $scope.venue, $scope.day, $scope.time)
+
+			console.log($scope.eventfields);
+
+			$http.post('../php/router.php', $scope.eventfields)
+				.success(function(res) {
+					console.log(res);
+					$scope.eventList.push($scope.eventfields);
 				}
-			}).then(function(modal) {
-				modal.element.modal();
-			})
+			);
 		};
 	})
 
-	.controller('eventsController', function($scope, $http, EventsData, AttendanceData) {
-		$scope.list = function() {}
-		$scope.update = function() {}
-		$scope.delete = function(student) {
-			console.log(student)
+// -------------------------
+// MODAL
+	.controller('modalController', function($scope, $http, EventsData, StudentsData, currentRecord, type) {
+		$scope.currS = {};
+		$scope.type = type;
+
+		if(type === 'student') {
+			StudentsData.then(function(res) {
+				$scope.currS = res[currentRecord];
+			});
 		}
-	})
+		if(type == 'event') {
+			EventsData.then(function(res) {
+				$scope.currS = res[currentRecord];
+			})
+		}
 
-	.controller('modalController', function($scope, $http, StudentsData, currentStudent) {
-		StudentsData.then(function(res) {
-			$scope.currS = res[currentStudent];
-		});
+		$scope.updateStudent = function(data) {
+			data.student = true;
+			$http.post('../php/router.php', data)
+				.success(function(res) {
+					console.log(data)
+					console.log(res)
+				}
+			);
+		}
 
-		$scope.updateStudent = function(a) {
-			a.student = true;
-			$http.post('../php/router.php', a)
+		$scope.updateEvent = function(data) {
+			data.event = true;
+			$http.post('../php/router.php', data)
+				.success(function(res) {
+					console.log(data)
+					console.log(res)
+				}
+			);
 		}
 	})
