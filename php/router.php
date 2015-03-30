@@ -13,9 +13,10 @@ if( isset($_GET['student']) )
 if( isset($_POST['student']) ) {
 	include 'student.php';
 	if(isset($_POST['id'])) {
-		studentUpdate($_POST);
 		if(isset($_POST['delete'])) {
 			studentDelete($_POST);
+		}else{
+			studentUpdate($_POST);
 		}
 	}else{
 		studentCreate($_POST);
@@ -30,9 +31,10 @@ if( isset($_GET['event']) )
 if( isset($_POST['event']) ) {
 	include 'event.php';
 	if(isset($_POST['id'])) {
-		eventUpdate($_POST);
 		if(isset($_POST['delete'])) {
 			eventDelete($_POST);
+		}else{
+			eventUpdate($_POST);
 		}
 	}else{
 		studentCreate($_POST);
@@ -47,9 +49,10 @@ if( isset($_GET['attendance']) )
 if( isset($_POST['attendance']) ) {
 	include 'attendance.php';
 	if(isset($_POST['id'])) {
-		attendanceUpdate($_POST);
 		if(isset($_POST['delete'])) {
 			attendanceDelete($_POST);
+		}else{
+			attendanceUpdate($_POST);
 		}
 	}else{
 		attendanceCreate($_POST);
