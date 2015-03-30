@@ -8,17 +8,19 @@ function studentCreate($input){
 
 	// create an array of data
 	$data = array(
-		'a' => $input['fullname'],
-		'b' => $input['ic'],
-		'c' => $input['matrix_no'],
-		'd' => $input['serial_no']
+		'a' => $a,
+		'b' => $b,
+		'c' => $c,
+		'd' => $d
 	);
 
 	// prepare database query
-	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES (:a,:b,:c,:d)";
+	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES ($a,$b,$c,$d)";
+	echo $sql; exit;
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
+	//$qry->debugDumpParams();
 	$dbc = null;
 }
 
@@ -69,14 +71,6 @@ function studentUpdate($input){
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
-
-	/*$sql = "SELECT * FROM student WHERE id=:e";
-	$qry = $dbc->prepare($sql);
-	$qry->execute(array('e'=>$e));
-	$row = $qry->fetch(PDO::FETCH_ASSOC);
-	$dbc = null;*/
-
-	return array();
 }
 
 function studentDelete($input){
@@ -89,6 +83,4 @@ function studentDelete($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }

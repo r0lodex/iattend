@@ -4,19 +4,17 @@ function eventCreate($input){
 	$data = array(
 		'a' => $input['name'],
 		'b' => $input['descp'],
-		'c' => $input['vanue'],
+		'c' => $input['venue'],
 		'd' => $input['day'],
 		'e' => $input['time']
 	);
 
 	// prepare database query
-	$sql = "INSERT INTO event (name,descp,vanue,day,time) vALUES (:a,:b,:c,:d,:e)";
+	$sql = "INSERT INTO event (name,descp,venue,day,time) vALUES (:a,:b,:c,:d,:e)";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function eventRead($input){
@@ -39,8 +37,6 @@ function eventDelete($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function eventUpdate($input){
@@ -60,8 +56,6 @@ function eventUpdate($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
 
 function eventList(){
