@@ -98,17 +98,31 @@ var iattend = angular.module('iattend', ['ngRoute'])
 			$scope.studentfields.fullname = $scope.fullname
 			$scope.studentfields.matrix_no = $scope.matrix_no
 
-			$http.post('../php/router.php?student=1&action=create', $scope.studentfields)
+			$http.post('../php/router.php?student=1', $scope.studentfields)
 				.success(function(res) {
 					$scope.studentList.push($scope.studentfields)
-					console.log(res)
 				}
 			);
+		}
+		$scope.delete = function(student) {
+			var a = confirm('Confirm Delete?');
+			if(a) {
+				var del = $scope.studentList[student];
+					del.delete = true;
+
+				$http.post('../php/router.php?student=1', del)
+					.success(function(res){
+						$scope.studentList.splice(student,1)
+					}
+				);
+			}
 		}
 	})
 
 	.controller('eventsController', function($scope, $http, EventsData, AttendanceData) {
 		$scope.list = function() {}
 		$scope.update = function() {}
-		$scope.delete = function() {}
+		$scope.delete = function(student) {
+			console.log(student)
+		}
 	})
