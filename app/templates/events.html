@@ -15,9 +15,9 @@
 				<label>Venue</label>
 				<input class="form-control" name="venue" ng-model="venue" required>
 			</div>
-			<div class="form-group">
+			<div class="form-group" id="dates">
 				<label>Event Date</label>
-				<input class="form-control" name="day" ng-model="day" required type="date">
+				<input class="form-control" name="day" ng-model="day" required>
 			</div>
 			<div class="form-group">
 				<label>Event Time</label>
@@ -29,7 +29,7 @@
 	<div class="col-md-8">
 		<h4>Event Listing</h4>
 		<ul class="list-group">
-			<li ng-class="{actives: $index != selected}" class="list-group-item" ng-repeat="event in eventList" >
+			<li class="list-group-item" ng-repeat="event in eventList" >
 				<h4 class="text-capitalize">{{ event.name }}</h4>
 				<p><small class="text-muted">{{ event.descp }}</small></p>
 				<p>

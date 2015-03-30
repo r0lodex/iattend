@@ -161,6 +161,11 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			$scope.eventList = res;
 		});
 
+		$('#dates input').datepicker({
+	        format: 'dd/mm/yyyy',
+	        autoclose: true
+	    });
+
 		$scope.addEvent = function() {
 			$scope.eventfields = new $rootScope.efields($scope.name, $scope.descp, $scope.venue, $scope.day, $scope.time)
 
@@ -289,7 +294,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				);
 			}
 		}
-	})
+	});
 
 
 

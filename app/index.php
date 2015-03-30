@@ -8,6 +8,7 @@
 <html ng-app="iattend">
 <head>
 	<title>i-Attend Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap-datepicker.standalone.css">
 	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/iattend.css">
 </head>
@@ -35,6 +36,9 @@
 				</div>
 			</div>
 		</nav>
+		<div id="dates">
+			<input type="text">
+		</div>
 		<div class="container-fluid views" ng-view></div>
 	</div>
 
@@ -44,6 +48,7 @@
 	<script src="../static/vendor/angular.min.js"></script>
 	<script src="../static/vendor/angular-route.js"></script>
 	<script src="../static/vendor/angularModalService.js"></script>
+	<script src="../static/vendor/bootstrap-datepicker.js"></script>
 	<script src="../static/js/app.js"></script>
 </body>
 </html>
