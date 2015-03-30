@@ -6,7 +6,7 @@ if(!isset($_SESSION)) {	session_start(); }
 include('database.php');
 
 //process student req
-if( isset($_GET['student']) )
+if( isset($_GET['student']) ){
 	include 'student.php';
 	studentRead($_GET);
 }
@@ -24,7 +24,7 @@ if( isset($_POST['student']) ) {
 }
 
 //process event req
-if( isset($_GET['event']) )
+if( isset($_GET['event']) ){
 	include 'event.php';
 	eventRead($_GET);
 }
@@ -42,7 +42,7 @@ if( isset($_POST['event']) ) {
 }
 
 //process attendance req
-if( isset($_GET['attendance']) )
+if( isset($_GET['attendance']) ){
 	include 'attendance.php';
 	attendanceRead($_GET);
 }
