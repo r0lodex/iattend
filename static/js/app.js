@@ -130,6 +130,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 			$http.post('../php/router.php', $scope.studentfields)
 				.success(function(res) {
+					alert('Student Added');
 					console.log(res)
 					$scope.studentList.push($scope.studentfields)
 				}
@@ -173,6 +174,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 			$http.post('../php/router.php', $scope.eventfields)
 				.success(function(res) {
+					alert('Event Added');
 					console.log(res);
 					$scope.eventList.push($scope.eventfields);
 				}
