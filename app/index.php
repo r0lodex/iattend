@@ -8,6 +8,7 @@
 <html ng-app="iattend">
 <head>
 	<title>i-Attend Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap-datepicker.standalone.css">
 	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/iattend.css">
