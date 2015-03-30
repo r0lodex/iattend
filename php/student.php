@@ -1,5 +1,6 @@
 <?php
 function studentCreate($input){
+	var_dump($input);
 	// process inpput data
 	$a = (isset($input['fullname'])) ? $input['fullname']:null;
 	$b = (isset($input['ic'])) ? $input['ic']:null;
@@ -15,7 +16,7 @@ function studentCreate($input){
 	);
 
 	// prepare database query
-	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES ($a,$b,$c,$d)";
+	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES (:a,:b,:c,:d)";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);

@@ -2,7 +2,6 @@
 /*
 class Database {
     private static $conn;
-
     public function connect() {
         if (!self::$conn) {
             try {
@@ -16,7 +15,6 @@ class Database {
         return self::$conn;
     }
 }
-
 */
 
 function Database(){
