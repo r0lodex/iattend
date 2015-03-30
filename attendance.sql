@@ -39,7 +39,7 @@ CREATE TABLE `event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `descp` varchar(255) DEFAULT NULL,
-  `vanue` varchar(255) DEFAULT NULL,
+  `venue` varchar(255) DEFAULT NULL,
   `day` date DEFAULT NULL,
   `time` time DEFAULT NULL,
   PRIMARY KEY (`id`)

@@ -17,7 +17,8 @@
 			<!-- BEGIN LOGIN FORM -->
 				<h4>i-Attend Login</h4>
 				<p class="text-danger hidden">Invalid username/password</p>
-				<form name="login" action="router.php">
+				<form name="login" action="php/router.php" method="POST">
+					<input type="hidden" value="1" name="login"/>
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
@@ -52,39 +53,7 @@
 					</thead>
 					<tbody>
 					<!-- BEGIN PUBLIC EVENT LISTING -->
-						<tr>
-							<td>
-								<p>
-									<strong>Ceramah Peperiksaan</strong><br>
-									<small class="text-muted">Ceramah berkenaan peperiksaan akhir tahun</small>
-								</p>
-							</td>
-							<td><code class="bg-success text-info">30 Mac 2015</code></td>
-							<td><code class="bg-info text-success">11.00AM &mdash; 1.00PM</code></td>
-							<td>Dewan Serbaguna</td>
-						</tr>
-						<tr>
-							<td>
-								<p>
-									<strong>Ceramah Anti Dadah</strong><br>
-									<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas in pariatur eos suscipit, unde itaque vero voluptatum perferendis quos possimus deserunt reiciendis repellat excepturi sunt ipsum! Nostrum, nemo! Doloremque, rem!</small>
-								</p>
-							</td>
-							<td><code class="bg-success text-info">02 Apr 2015</code></td>
-							<td><code class="bg-info text-success">8.00AM &mdash; 10.00PM</code></td>
-							<td>Dewan Serbaguna</td>
-						</tr>
-						<tr>
-							<td>
-								<p>
-									<strong>Ceramah Peperiksaan</strong><br>
-									<small class="text-muted">Ceramah berkenaan peperiksaan akhir tahun</small>
-								</p>
-							</td>
-							<td><code class="bg-success text-info">30 Mac 2015</code></td>
-							<td><code class="bg-info text-success">11.00AM &mdash; 1.00PM</code></td>
-							<td>Dewan Serbaguna</td>
-						</tr>
+						<?php include('php/database.php'); include('php/event.php'); eventList(); ?>
 					<!-- END PUBLIC EVENT LISTING -->
 					</tbody>
 				</table>

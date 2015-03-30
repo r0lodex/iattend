@@ -1,7 +1,4 @@
 <?php
-
-include('database.php');
-
 function eventCreate($input){
 	// crete an array of data from input
 	$data = array(
@@ -14,12 +11,22 @@ function eventCreate($input){
 
 	// prepare database query
 	$sql = "INSERT INTO event (name,descp,vanue,day,time) vALUES (:a,:b,:c,:d,:e)";
-	$dbc = Database::connect();
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
 
 	return array();
+}
+
+function eventRead($input){
+	$sql = "SELECT * FROM event";
+	$dbc = Database();
+	$qry = $dbc->prepare($sql);
+	$qry->execute();
+	$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+	$dbc = null;
+	return $rows;
 }
 
 function eventDelete($input){
@@ -28,7 +35,7 @@ function eventDelete($input){
 
 	// prepare database query
 	$sql = "DELETE FROM event WHERE id=:a";
-	$dbc = Database::connect();
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
@@ -41,18 +48,31 @@ function eventUpdate($input){
 	$data = array(
 		'a' => $input['name'],
 		'b' => $input['descp'],
-		'c' => $input['vanue'],
+		'c' => $input['venue'],
 		'd' => $input['day'],
 		'e' => $input['time'],
 		'f' => $input['id']
 	);
 
 	// prepare database query
-	$sql = "UPDATE event SET name=COALESCE(name,:a), descp=COALESCE(descp,:b), vanue=COALESCE(vanue,:c), day=COALESCE(day,:d), time=COALESCE(time,:e) WHERE id=:f";
-	$dbc = Database::connect();
+	$sql = "UPDATE event SET name=IFNOT(:a,name), descp=IFNOT(:b,name), vanue=IFNOT(:c,name), day=IFNOT(:d,day), time=IFNOT(:e,time) WHERE id=:f";
+	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
 
 	return array();
+}
+
+function eventList(){
+	$buff = '';
+	$res = eventRead(null);
+	foreach($res as $row){
+		$buff.="<tr>
+		<td><p><strong>".$row['name']."</strong><br><small class=\"text-muted\">".$row['descp']."</small></p></td>
+		<td><code class=\"bg-success text-info\">".date('d M Y',strtotime($row['day']))."</code></td>
+		<td><code class=\"bg-info text-success\">".date('g:ia',strtotime($row['time']))."</code></td>
+		<td>".$row['venue']."</td></tr>";
+	}
+	echo $buff;
 }

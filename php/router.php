@@ -2,6 +2,10 @@
 //start session is not exists
 if(!isset($_SESSION)) {	session_start(); }
 
+// database connection function
+include('database.php');
+
+
 //process student req
 if( isset($_GET['student']) || isset($_POST['student']) ) {
 	include 'student.php';
@@ -29,15 +33,19 @@ if( isset($_GET['event']) || isset($_POST['event']) ) {
 	include 'event.php';
 	switch($_GET['action']){
 		case 'create':
+			$response = eventCreate($_POST);
 		break;
 
 		case 'read':
+			$response = eventRead($_GET);
 		break;
 
 		case 'update':
+			$response = eventUpdate($_POST);
 		break;
 
 		case 'delete':
+			$response = eventDelete($_POST);
 		break;
 	}
 }
@@ -74,13 +82,15 @@ if(isset($_POST['login'])){
 if(isset($_GET['logout'])) {
 	unset($_SESSION);
 	session_destroy();
+	header('Location: ../');
 }
 
 // check authorization
 if(!isset($_SESSION['authorized'])){
-	$response = array('auth'=>false);
+	$response['auth'] = false;
 }else{
-	$response = array('auth'=>true);
+	$response['auth'] = true;
+	header('Location: ../app');
 }
 
 
