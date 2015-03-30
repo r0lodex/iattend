@@ -14,14 +14,11 @@ function studentCreate($input){
 		'd' => $d
 	);
 
-	var_dump($data); exit;
 	// prepare database query
 	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES ($a,$b,$c,$d)";
-	//echo $sql; exit;
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
-	//$qry->debugDumpParams();
 	$dbc = null;
 }
 
@@ -42,7 +39,7 @@ function studentRead($input){
 	$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 	$dbc = null;
 
-	return $rows;
+	echo json_encode($rows);
 }
 
 function studentUpdate($input){

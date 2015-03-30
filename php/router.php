@@ -5,57 +5,54 @@ if(!isset($_SESSION)) {	session_start(); }
 // database connection function
 include('database.php');
 
-// init response array
-$response = array();
-
 //process student req
 if( isset($_GET['student']) )
 	include 'student.php';
-	$response = studentRead($_GET);
+	studentRead($_GET);
 }
 if( isset($_POST['student']) ) {
 	include 'student.php';
 	if(isset($_POST['id'])) {
-		$response = studentUpdate($_POST);
+		studentUpdate($_POST);
 		if(isset($_POST['delete'])) {
-			$response = studentDelete($_POST);
+			studentDelete($_POST);
 		}
 	}else{
-		$response = studentCreate($_POST);
+		studentCreate($_POST);
 	}
 }
 
 //process event req
 if( isset($_GET['event']) )
 	include 'event.php';
-	$response = eventRead($_GET);
+	eventRead($_GET);
 }
 if( isset($_POST['event']) ) {
 	include 'event.php';
 	if(isset($_POST['id'])) {
-		$response = eventUpdate($_POST);
+		eventUpdate($_POST);
 		if(isset($_POST['delete'])) {
-			$response = eventDelete($_POST);
+			eventDelete($_POST);
 		}
 	}else{
-		$response = studentCreate($_POST);
+		studentCreate($_POST);
 	}
 }
 
 //process attendance req
 if( isset($_GET['attendance']) )
 	include 'attendance.php';
-	$response = attendanceRead($_GET);
+	attendanceRead($_GET);
 }
 if( isset($_POST['attendance']) ) {
 	include 'attendance.php';
 	if(isset($_POST['id'])) {
-		$response = attendanceUpdate($_POST);
+		attendanceUpdate($_POST);
 		if(isset($_POST['delete'])) {
-			$response = attendanceDelete($_POST);
+			attendanceDelete($_POST);
 		}
 	}else{
-		$response = attendanceCreate($_POST);
+		attendanceCreate($_POST);
 	}
 }
 
@@ -75,6 +72,4 @@ if(isset($_GET['logout'])) {
 	header('Location: ../');
 }
 
-//return json array
-echo json_encode($response);
 exit;
