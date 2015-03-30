@@ -113,6 +113,7 @@ var iattend = angular.module('iattend', ['ngRoute'])
 			var a = confirm('Confirm Delete?');
 			if(a) {
 				var del = $scope.studentList[student];
+					del.student = true;
 					del.delete = true;
 
 				console.log(del)
