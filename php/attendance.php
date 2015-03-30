@@ -1,6 +1,5 @@
 <?php
 function attendanceCreate($input) {
-	var_dump($input);exit;
 	// process input data
 	$a = (isset($input['serial_no'])) ? $input['serial_no']:null;
 	$b = (isset($input['eventid'])) ? $input['eventid']:null;
