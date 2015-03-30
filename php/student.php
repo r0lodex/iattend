@@ -8,10 +8,10 @@ function studentCreate($input){
 
 	// create an array of data
 	$data = array(
-		'a' => $input['fullname'],
-		'b' => $input['ic'],
-		'c' => $input['matrix_no'],
-		'd' => $input['serial_no']
+		'a' => $a,
+		'b' => $b,
+		'c' => $c,
+		'd' => $d
 	);
 
 	// prepare database query
@@ -81,6 +81,4 @@ function studentDelete($input){
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
 	$dbc = null;
-
-	return array();
 }
