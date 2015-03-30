@@ -81,8 +81,6 @@ var iattend = angular.module('iattend', ['ngRoute'])
 
 	.controller('studentsController', function($scope, $http, StudentsData) {
 
-		$scope.studentList = [];
-
 		var fields = function(){
 			this.ic = '';
 			this.serial_no = '';
