@@ -176,7 +176,11 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				.success(function(res) {
 					alert('Event Added');
 					console.log(res);
-					$scope.eventList.push($scope.eventfields);
+					$http.get('../php/router.php?event=1')
+						.success(function(response) {
+							$scope.eventList = response;
+						}
+					);
 				}
 			);
 		};
