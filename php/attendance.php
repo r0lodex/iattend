@@ -28,14 +28,28 @@ function attendanceRead($input) {
 	);
 
 	// prepare database query
-	$sql = "SELECT * FROM ";
+	$sql = "SELECT std.fullname,std.matrix_no,att.time_reg,att.id FROM attendance att join student std ON std.id=att.student_id WHERE att.event_id=:a";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
+	$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 	$dbc = null;
 	echo json_encode($rows);
 }
 
 function attendanceDelete($input) {
+	// process input data
+	$a = (isset($input['id'])) ? $input['id']:null;
 
+	// create data array
+	$data = array(
+		'a' => $a
+	);
+
+	// prepare database query
+	$sql = "DELETE FROM attendance WHERE id=:a";
+	$dbc = Database();
+	$qry = $dbc->prepare($sql);
+	$qry->execute($data);
+	$dbc = null;
 }
