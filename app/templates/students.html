@@ -2,22 +2,22 @@
 <hr>
 <div class="row">
 	<div class="col-md-4">
-		<form class="bg-info" style="padding: 20px; border-radius:5px;">
+		<form name="studentForm" class="bg-info" style="padding: 20px; border-radius:5px;" ng-submit="createStudent()" novalidate>
 			<div class="form-group">
 				<label>Name</label>
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" name="fullname" ng-model="fullname" required>
 			</div>
 			<div class="form-group">
 				<label>IC No</label>
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" name="ic_no" ng-model="ic_no" required>
 			</div>
 			<div class="form-group">
 				<label>Matric No</label>
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" name="matrix_no" ng-model="matrix_no" required>
 			</div>
 			<div class="form-group">
 				<label>RFID</label>
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" name="serial_no" ng-model="serial_no" required>
 			</div>
 			<input type="submit" class="btn btn-primary" value="Add Student">
 		</form>
@@ -27,7 +27,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>RFID</th>
+						<th>Serial No</th>
 						<th>Name</th>
 						<th>Matric No</th>
 						<th>IC No</th>
@@ -39,7 +39,7 @@
 						<td>{{ student.serial_no }}</td>
 						<td>{{ student.fullname }}</td>
 						<td>{{ student.matrix_no }}</td>
-						<td>{{ student.ic }}</td>
+						<td>{{ student.ic_no }}</td>
 						<td>
 							<button ng-click="edit(student.id)" class="btn btn-default btn-xs">Edit</button>
 							<button ng-click="delete(student.id)" class="btn btn-danger btn-xs">Delete</button>

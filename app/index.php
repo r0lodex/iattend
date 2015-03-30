@@ -30,7 +30,7 @@
 						<li ng-class="{active:isActive('/students')}"><a href="#/students"><span class="glyphicon glyphicon-user"></span> Student</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#logout">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+						<li><a href="../php/router.php?logout=1">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
 					</ul>
 				</div>
 			</div>

@@ -38,7 +38,8 @@ var iattend = angular.module('iattend', ['ngRoute'])
 		$http.get('../php/router.php?student=1&action=read')
 			.success(function(response) {
 				deferred.resolve(response);
-		});
+			}
+		);
 
 		return deferred.promise;
 	})
@@ -49,7 +50,8 @@ var iattend = angular.module('iattend', ['ngRoute'])
 		$http.get('../php/router.php?event=1&action=read')
 			.success(function(response) {
 				deferred.resolve(response);
-		});
+			}
+		);
 
 		return deferred.promise;
 	})
@@ -60,7 +62,8 @@ var iattend = angular.module('iattend', ['ngRoute'])
 		$http.get('../php/router.php?attendance=1&action=read')
 			.success(function(response) {
 				deferred.resolve(response);
-		});
+			}
+		);
 
 		return deferred.promise;
 	})
@@ -78,14 +81,32 @@ var iattend = angular.module('iattend', ['ngRoute'])
 
 	.controller('studentsController', function($scope, $http, StudentsData) {
 
-		$scope.studentList = [{"id":"1","fullname":"Abu Tausi Jaiha","ic":"881203-56-5857","matrix_no":"MYRF12345","serial_no":"#1234"},{"id":"2","fullname":"Kamarul Arifin Yahya","ic":"860712-14-9983","matrix_no":"MYRF45678","serial_no":"#4567"}];
+		$scope.studentList = [];
 
-		// StudentsData.then(function(res) {
-		// 	$scope.studentList = res;
-		// })
+		var fields = function(){
+			this.ic_no = '';
+			this.serial_no = '';
+			this.fullname = '';
+			this.matrix_no = '';
+		}
+		StudentsData.then(function(res) {
+			$scope.studentList = res;
+		});
 
-		$scope.update = function() {}
-		$scope.delete = function() {}
+		$scope.createStudent = function() {
+			$scope.studentfields = new fields();
+			$scope.studentfields.ic_no = $scope.ic_no
+			$scope.studentfields.serial_no = $scope.serial_no
+			$scope.studentfields.fullname = $scope.fullname
+			$scope.studentfields.matrix_no = $scope.matrix_no
+
+			$http.post('../php/router.php?student=1&action=create', $scope.studentfields)
+				.success(function(res) {
+					$scope.studentList.push($scope.studentfields)
+					console.log(res)
+				}
+			);
+		}
 	})
 
 	.controller('eventsController', function($scope, $http, EventsData, AttendanceData) {
