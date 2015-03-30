@@ -14,9 +14,10 @@ function studentCreate($input){
 		'd' => $d
 	);
 
+	var_dump($data); exit;
 	// prepare database query
 	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES ($a,$b,$c,$d)";
-	echo $sql; exit;
+	//echo $sql; exit;
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);

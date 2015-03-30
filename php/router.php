@@ -9,65 +9,53 @@ include('database.php');
 $response = array();
 
 //process student req
-if( isset($_GET['student']) || isset($_POST['student']) ) {
+if( isset($_GET['student']) )
 	include 'student.php';
-	switch($_GET['action']){
-		case 'create':
-			$response = studentCreate($_POST);
-		break;
-
-		case 'read':
-			$response = studentRead($_GET);
-		break;
-
-		case 'update':
-			$response = studentUpdate($_POST);
-		break;
-
-		case 'delete':
+	$response = studentRead($_GET);
+}
+if( isset($_POST['student']) ) {
+	include 'student.php';
+	if(isset($_POST['id'])) {
+		$response = studentUpdate($_POST);
+		if(isset($_POST['delete'])) {
 			$response = studentDelete($_POST);
-		break;
+		}
+	}else{
+		$response = studentCreate($_POST);
 	}
 }
 
 //process event req
-if( isset($_GET['event']) || isset($_POST['event']) ) {
+if( isset($_GET['event']) )
 	include 'event.php';
-	switch($_GET['action']){
-		case 'create':
-			$response = eventCreate($_POST);
-		break;
-
-		case 'read':
-			$response = eventRead($_GET);
-		break;
-
-		case 'update':
-			$response = eventUpdate($_POST);
-		break;
-
-		case 'delete':
+	$response = eventRead($_GET);
+}
+if( isset($_POST['event']) ) {
+	include 'event.php';
+	if(isset($_POST['id'])) {
+		$response = eventUpdate($_POST);
+		if(isset($_POST['delete'])) {
 			$response = eventDelete($_POST);
-		break;
+		}
+	}else{
+		$response = studentCreate($_POST);
 	}
 }
 
 //process attendance req
-if( isset($_GET['attendance']) || isset($_POST['attendance']) ) {
+if( isset($_GET['attendance']) )
 	include 'attendance.php';
-	switch($_GET['action']){
-		case 'create':
-			$response = attendanceCreate($_POST);
-		break;
-
-		case 'read':
-		break;
-
-		case 'update':
-		break;
-
-		case 'delete':
-		break;
+	$response = attendanceRead($_GET);
+}
+if( isset($_POST['attendance']) ) {
+	include 'attendance.php';
+	if(isset($_POST['id'])) {
+		$response = attendanceUpdate($_POST);
+		if(isset($_POST['delete'])) {
+			$response = attendanceDelete($_POST);
+		}
+	}else{
+		$response = attendanceCreate($_POST);
 	}
 }
 
