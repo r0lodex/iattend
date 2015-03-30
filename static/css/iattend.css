@@ -8,3 +8,9 @@
 .table tbody td:first-child {
 	max-width: 400px;
 }
+
+#branding img {
+	position: relative;
+	top: -23px;
+	width: 150px;
+}

@@ -1,0 +1,52 @@
+<h1><span class="glyphicon glyphicon-user"></span> Student</h1>
+<hr>
+<div class="row">
+	<div class="col-md-4">
+		<form class="bg-info" style="padding: 20px; border-radius:5px;">
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>IC No</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Matric No</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>RFID</label>
+				<input type="text" class="form-control">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Add Student">
+		</form>
+	</div>
+	<div class="col-md-8">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>RFID</th>
+						<th>Name</th>
+						<th>Matric No</th>
+						<th>IC No</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="student in studentList">
+						<td>{{ student.serial_no }}</td>
+						<td>{{ student.fullname }}</td>
+						<td>{{ student.matrix_no }}</td>
+						<td>{{ student.ic }}</td>
+						<td>
+							<button ng-click="edit(student.id)" class="btn btn-default btn-xs">Edit</button>
+							<button ng-click="delete(student.id)" class="btn btn-danger btn-xs">Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
