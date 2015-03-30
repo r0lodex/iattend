@@ -1,6 +1,5 @@
 <?php
 function eventCreate($input){
-	var_dump($input);
 	// crete an array of data from input
 	$data = array(
 		'a' => $input['name'],
