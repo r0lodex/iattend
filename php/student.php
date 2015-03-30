@@ -44,10 +44,10 @@ function studentRead($input){
 
 function studentUpdate($input){
 	// process input data
-	$a = (isset($input['name'])) ? $input['name']:null;
-	$b = (isset($input['icno'])) ? $input['icno']:null;
-	$c = (isset($input['matrix'])) ? $input['matrix']:null;
-	$d = (isset($input['serial'])) ? $input['serial']:null;
+	$a = (isset($input['fullname'])) ? $input['fullname']:null;
+	$b = (isset($input['ic'])) ? $input['ic']:null;
+	$c = (isset($input['matrix_no'])) ? $input['matrix_no']:null;
+	$d = (isset($input['serial_no'])) ? $input['serial_no']:null;
 	$e = (isset($input['id'])) ? $input['id']:null;
 
 	// this will cause error. bail out.
