@@ -16,7 +16,7 @@
 				<input type="text" class="form-control" name="matrix_no" ng-model="matrix_no" required>
 			</div>
 			<div class="form-group">
-				<label>RFID</label>
+				<label>Serial No</label>
 				<input type="text" class="form-control" name="serial_no" ng-model="serial_no" required>
 			</div>
 			<input type="submit" class="btn btn-primary" value="Add Student">
@@ -41,7 +41,7 @@
 						<td>{{ student.matrix_no }}</td>
 						<td>{{ student.ic }}</td>
 						<td>
-							<button ng-click="edit(student.id)" class="btn btn-default btn-xs">Edit</button>
+							<button ng-click="showModal($index)" class="btn btn-default btn-xs">Edit</button>
 							<button ng-click="delete($index)" class="btn btn-danger btn-xs">Delete</button>
 						</td>
 					</tr>

@@ -1,6 +1,14 @@
-var iattend = angular.module('iattend', ['ngRoute'])
+var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 	.run(function($rootScope) {
 		console.log('Started!')
+
+		$rootScope.sfields = function(ic, serial, name, matrix){
+			this.ic = ic;
+			this.serial_no = serial;
+			this.fullname = name;
+			this.matrix_no = matrix;
+		}
+
 	})
 /*
  	ROUTE CONFIGURATION
@@ -79,25 +87,14 @@ var iattend = angular.module('iattend', ['ngRoute'])
 	    }
 	})
 
-	.controller('studentsController', function($scope, $http, StudentsData) {
+	.controller('studentsController', function($rootScope, $scope, $http, StudentsData, ModalService) {
 
-		var fields = function(){
-			this.ic = '';
-			this.serial_no = '';
-			this.fullname = '';
-			this.matrix_no = '';
-		}
 		StudentsData.then(function(res) {
 			$scope.studentList = res;
 		});
 
 		$scope.createStudent = function() {
-			$scope.studentfields = new fields();
-			$scope.studentfields.ic = $scope.ic
-			$scope.studentfields.serial_no = $scope.serial_no
-			$scope.studentfields.fullname = $scope.fullname
-			$scope.studentfields.matrix_no = $scope.matrix_no
-
+			$scope.studentfields = new $rootScope.sfields($scope.ic, $scope.serial_no, $scope.fullname, $scope.matrix_no);
 			$scope.studentfields.student = true;
 
 			console.log($scope.studentfields)
@@ -126,6 +123,17 @@ var iattend = angular.module('iattend', ['ngRoute'])
 				);
 			}
 		}
+		$scope.showModal = function(record) {
+			ModalService.showModal({
+				templateUrl: 'templates/modal.html',
+				controller: "modalController",
+				inputs: {
+					currentStudent: record
+				}
+			}).then(function(modal) {
+				modal.element.modal();
+			})
+		};
 	})
 
 	.controller('eventsController', function($scope, $http, EventsData, AttendanceData) {
@@ -133,5 +141,16 @@ var iattend = angular.module('iattend', ['ngRoute'])
 		$scope.update = function() {}
 		$scope.delete = function(student) {
 			console.log(student)
+		}
+	})
+
+	.controller('modalController', function($scope, $http, StudentsData, currentStudent) {
+		StudentsData.then(function(res) {
+			$scope.currS = res[currentStudent];
+		});
+
+		$scope.updateStudent = function(a) {
+			a.student = true;
+			$http.post('../php/router.php', a)
 		}
 	})

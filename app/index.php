@@ -43,6 +43,7 @@
 	<script src="../static/vendor/bootstrap.js"></script>
 	<script src="../static/vendor/angular.min.js"></script>
 	<script src="../static/vendor/angular-route.js"></script>
+	<script src="../static/vendor/angularModalService.js"></script>
 	<script src="../static/js/app.js"></script>
 </body>
 </html>
