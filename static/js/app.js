@@ -43,11 +43,10 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			})
 		};
 
-		$rootScope.eventModal = function(record) {
+		$rootScope.eventModal = function() {
 			ModalService.showModal({
 				templateUrl: 'templates/modal_event.html',
 				controller: "eventsController",
-				inputs: { currentRecord: record }
 			}).then(function(modal) {
 				modal.element.modal();
 
