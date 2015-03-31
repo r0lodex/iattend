@@ -15,7 +15,7 @@
 				</p>
 				<button class="btn btn-success btn-xs" ng-click="attendanceModal(event)">Attendance</button>
 				<div class="pull-right">
-					<button class="btn btn-default btn-xs">Report</button>
+					<a class="btn btn-default btn-xs" href="report.php?id={{ event.id }}" target="_blank">Report</a>
 					<button class="btn btn-default btn-xs" ng-click="showModal('event', $index)"><span class="glyphicon glyphicon-pencil"></span></button>
 					<button class="btn btn-default btn-xs" ng-click="delete($index)"><span class="glyphicon glyphicon-trash"></span></button>
 				</div>
