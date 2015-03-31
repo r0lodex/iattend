@@ -3,6 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-body">
 				<!-- Student Form -->
+				<h3 ng-if="type == 'student'" style="margin-top:10px" class="text-center">Edit Student ({{ currS.fullname }})</h3>
 				<form name="studentForm" ng-if="type == 'student'">
 					<div class="form-group">
 						<label>Name</label>
@@ -53,7 +54,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" ng-if="type == 'student'" ng-click="updateStudent(currS)">Update Student</button>
 				<button type="button" class="btn btn-success" ng-if="type == 'event'" ng-click="updateEvent(currS)">Update Event</button>
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" class="btn">Close</button>
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" id="closeModal">Close</button>
 			</div>
 		</div>
 	</div>
