@@ -276,14 +276,11 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 			$http.post('../php/router.php', $scope.newentry).success(function(res) {
 				console.log(res.length)
-				if (res.length > 0) {
-					$http.get('../php/router.php?attendance=1&id='+currentRecord.id).success(function(ress) {
-						$scope.att = []
-						$scope.att = ress
-					})
-				} else {
-					alert('Student doesn\'t exist!')
-				}
+				$scope.serial_no = '';
+				$http.get('../php/router.php?attendance=1&id='+currentRecord.id).success(function(ress) {
+					$scope.att = []
+					$scope.att = ress
+				})
 			})
 		}
 
