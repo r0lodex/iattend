@@ -13,6 +13,7 @@
 </head>
 <body>
 	<div class="container">
+		<hr>
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-md-8">
@@ -45,7 +46,7 @@
 		</div>
 
 		<hr>
-		<h3 class="text-center">Upcoming Events</h3>
+		<h3 class="text-center"><span class="glyphicon glyphicon-arrow-down text-muted small"></span> UPCOMING EVENTS <span class="glyphicon glyphicon-arrow-down text-muted small"></span></h3>
 		<hr>
 
 		<div class="row">
