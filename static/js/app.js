@@ -36,6 +36,10 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				}
 			}).then(function(modal) {
 				modal.element.modal();
+				$('#dates input').datepicker({
+			        format: 'dd/mm/yyyy',
+			        autoclose: true
+			    });
 			})
 		};
 
