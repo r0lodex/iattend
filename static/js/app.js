@@ -28,7 +28,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		};
 		$rootScope.showModal = function(type, record) {
 			ModalService.showModal({
-				templateUrl: 'templates/modal.html',
+				templateUrl: 'templates/modal_editing.html',
 				controller: "modalController",
 				inputs: {
 					type : type,
@@ -43,6 +43,15 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			ModalService.showModal({
 				templateUrl: 'templates/modal_event.html',
 				controller: "eventsController",
+			}).then(function(modal) {
+				modal.element.modal();
+			})
+		}
+
+		$rootScope.studentModal = function() {
+			ModalService.showModal({
+				templateUrl: 'templates/modal_student.html',
+				controller: "studentsController",
 			}).then(function(modal) {
 				modal.element.modal();
 			})
@@ -140,9 +149,10 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 			$http.post('../php/router.php', $scope.studentfields)
 				.success(function(res) {
-					alert('Student Added');
 					console.log(res)
 					$scope.studentList.push($scope.studentfields)
+					$('#closeModal').trigger('click')
+					alert('Student Added');
 				}
 			);
 		}
@@ -213,7 +223,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 		$scope.attendanceModal = function(record) {
 			ModalService.showModal({
-				templateUrl: 'templates/modal2.html',
+				templateUrl: 'templates/modal_attendance.html',
 				controller: "attendanceController",
 				inputs: {
 					currentRecord: record
@@ -303,6 +313,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		}
 	});
 
+// Live delegation of datepicker
 $('body').on('focus', '.dates input', function() {
 	$(this).datepicker({
         format: 'dd/mm/yyyy',
