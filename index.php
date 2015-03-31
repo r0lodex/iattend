@@ -1,3 +1,8 @@
+<?php
+	// Access Control
+	if(!isset($_SESSION)) { session_start(); }
+	if( isset($_SESSION['authorized']) ) { header('Location: app'); }
+?>
 <!DOCTYPE html>
 <html>
 <head>
