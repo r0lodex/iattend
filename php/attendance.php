@@ -60,10 +60,11 @@ function attendanceDelete($input) {
 function attendanceList($input) {
 	$input['ret'] = true;
 	$res = attendanceRead($input);
+
 	$i = 1;
 	$total = sizeof($res);
 	$buff = "<div class=\"page-header\">
-		<h1><small class=\"small text-muted\">Report</small><br>".$res[0]['name']." <a href=\"#print\" onclick=\"window.print()\" class=\"btn btn-default btn-xs\"><span class=\"glyphicon glyphicon-print\"></span> Print</a></h1>
+		<h1><small class=\"small text-muted\">Report</small><br>".$input['title']." <a href=\"#print\" onclick=\"window.print()\" class=\"btn btn-default btn-xs\"><span class=\"glyphicon glyphicon-print\"></span> Print</a></h1>
 		</div><div><p>Total Attendees: ".$total."</p><table class=\"table\"><thead><tr><th>#</th><th>Student's Name</th><th>Matrix No</th><th>Course</th><th>Time In</th></tr></thead><tbody>";
 	foreach($res as $row){
 		$buff.="<tr><td>".$i."</td><td>".$row['fullname']."</td><td>".$row['matrix_no']."</td><td>".$row['course']."</td><td>".$row['time_reg']."</td></tr>";
