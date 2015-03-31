@@ -70,7 +70,7 @@ function eventList(){
 	$res = eventRead('ret');
 	foreach($res as $row){
 		$buff.='<div class="col-md-4">
-					<div class="panel panel-warning">
+					<div class="panel panel-success">
 						<div class="panel-heading">
 							<h4><strong class="text-capitalize">'.$row["name"].'</strong><br>
 							<small class="small text-muted">'.$row["descp"].'</small>
