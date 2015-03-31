@@ -5,17 +5,19 @@ function studentCreate($input){
 	$b = (isset($input['ic'])) ? $input['ic']:null;
 	$c = (isset($input['matrix_no'])) ? $input['matrix_no']:null;
 	$d = (isset($input['serial_no'])) ? $input['serial_no']:null;
+	$d = (isset($input['course'])) ? $input['course']:null;
 
 	// create an array of data
 	$data = array(
 		'a' => $a,
 		'b' => $b,
 		'c' => $c,
-		'd' => $d
+		'd' => $d,
+		'e' => $e
 	);
 
 	// prepare database query
-	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no) VALUES (:a,:b,:c,:d)";
+	$sql = "INSERT INTO student (fullname,ic,matrix_no,serial_no,course) VALUES (:a,:b,:c,:d,:e)";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
@@ -48,7 +50,8 @@ function studentUpdate($input){
 	$b = (isset($input['ic'])) ? $input['ic']:null;
 	$c = (isset($input['matrix_no'])) ? $input['matrix_no']:null;
 	$d = (isset($input['serial_no'])) ? $input['serial_no']:null;
-	$e = (isset($input['id'])) ? $input['id']:null;
+	$e = (isset($input['course'])) ? $input['course']:null;
+	$f = (isset($input['id'])) ? $input['id']:null;
 
 	// this will cause error. bail out.
 	if($e == null) {
@@ -62,10 +65,11 @@ function studentUpdate($input){
 		'c' => $c,
 		'd' => $d,
 		'e' => $e,
+		'f' => $f
 	);
 
 	// prepare database query
-	$sql = "UPDATE student SET fullname=IFNULL(:a,fullname), ic=IFNULL(:b,ic), matrix_no=IFNULL(:c,matrix_no), serial_no=IFNULL(:d,serial_no) WHERE id=:e";
+	$sql = "UPDATE student SET fullname=IFNULL(:a,fullname), ic=IFNULL(:b,ic), matrix_no=IFNULL(:c,matrix_no), serial_no=IFNULL(:d,serial_no), course=IFNULL(:e,course) WHERE id=:f";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);

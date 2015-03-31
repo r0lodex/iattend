@@ -8,6 +8,8 @@ function eventCreate($input){
 		'd' => $input['day'],
 		'e' => $input['time']
 	);
+	// adjustment
+	//$data['e'] = 
 
 	// prepare database query
 	$sql = "INSERT INTO event (name,descp,venue,day,time) vALUES (:a,:b,:c,:d,:e)";
@@ -18,7 +20,7 @@ function eventCreate($input){
 }
 
 function eventRead($input){
-	$sql = "SELECT id,`name`,descp,venue,DATE_FORMAT(`day`,'%d %M %Y') AS day,TIME_FORMAT(`time`,'%l:%i %p') AS time FROM event";
+	$sql = "SELECT id,`name`,descp,venue,day,TIME(CONVERT_TZ(`time`,'+00:00','+08:00')) AS time FROM event";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute();

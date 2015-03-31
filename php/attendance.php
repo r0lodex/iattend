@@ -28,7 +28,7 @@ function attendanceRead($input) {
 	);
 
 	// prepare database query
-	$sql = "SELECT std.fullname,std.matrix_no,TIME_FORMAT(att.time_reg,'%l:%i %p') AS time_reg,att.id,evn.name FROM attendance att join student std ON std.id=att.student_id join event evn on evn.id=:a WHERE att.event_id=:a";
+	$sql = "SELECT std.fullname,std.matrix_no,CONVERT_TZ(att.time_reg,'+00:00','+08:00') as time_reg,att.id,evn.name FROM attendance att join student std ON std.id=att.student_id join event evn on evn.id=:a WHERE att.event_id=:a";
 	$dbc = Database();
 	$qry = $dbc->prepare($sql);
 	$qry->execute($data);
