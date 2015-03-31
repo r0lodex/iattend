@@ -15,6 +15,7 @@
 	width: 150px;
 }
 
-.actives {
-	background: whitesmoke;
+.panel-heading {
+	height: 80px;
+	overflow: auto;
 }

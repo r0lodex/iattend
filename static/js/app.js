@@ -2,7 +2,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 	.run(function($rootScope, ModalService) {
 		console.log('App Started!')
 
-		// Default fields for Events
+		// Default fields for Students
 		$rootScope.sfields = function(ic, serial, name, matrix, course){
 			this.ic = ic;
 			this.serial_no = serial;
@@ -10,7 +10,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			this.matrix_no = matrix;
 			this.course = course;
 			this.student = true;
-		}
+		};
 		// Default fields for Events
 		$rootScope.efields = function(name, desc, venue, date, time){
 			this.name = name;
@@ -19,7 +19,13 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			this.day = date;
 			this.time = time;
 			this.event = true;
-		}
+		};
+		// Default fields for Attendance
+		$rootScope.afields = function(eventID, serialNo) {
+			this.eventid = eventID;
+			this.serial_no = serialNo;
+			this.attendance = true;
+		};
 		$rootScope.showModal = function(type, record) {
 			ModalService.showModal({
 				templateUrl: 'templates/modal.html',
