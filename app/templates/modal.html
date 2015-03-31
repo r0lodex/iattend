@@ -1,4 +1,4 @@
-<div class="modal" id="details">
+<div class="modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -17,7 +17,7 @@
 						<input type="text" class="form-control" name="matrix_no" ng-model="currS.matrix_no" required>
 					</div>
 					<div class="form-group">
-						<label>Serial No</label>
+						<label>RFID</label>
 						<input type="text" class="form-control" name="serial_no" ng-model="currS.serial_no" required>
 					</div>
 					<div class="form-group">
@@ -26,22 +26,23 @@
 					</div>
 				</form>
 				<!-- Event Form -->
-				<form name="eventForm"  ng-if="type == 'event'">
+				<h3 ng-if="type == 'event'" style="margin-top:10px" class="text-center">Edit Event ({{ currS.name }})</h3>
+				<form name="eventForm" ng-if="type == 'event'">
 					<div class="form-group">
-						<label>Event Name</label>
+						<label>Title</label>
 						<input type="text" class="form-control" name="name" ng-model="currS.name" required>
 					</div>
 					<div class="form-group">
-						<label>Event Description</label>
+						<label>Description</label>
 						<input type="text" class="form-control" name="descp" ng-model="currS.descp" required>
 					</div>
 					<div class="form-group">
 						<label>Venue</label>
 						<input type="text" class="form-control" name="venue" ng-model="currS.venue" required>
 					</div>
-					<div class="form-group">
-						<label>Date (dd/mm/yyyy)</label>
-						<input class="form-control" name="day" ng-model="currS.day" required placeholder="31/03/2015">
+					<div class="form-group dates">
+						<label>Date</label>
+						<input type="text" class="form-control" name="day" ng-model="currS.day" required placeholder="31/03/2015">
 					</div>
 					<div class="form-group">
 						<label>Time (hh:mm:ss)</label>
