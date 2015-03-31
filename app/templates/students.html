@@ -19,6 +19,10 @@
 				<label>Serial No</label>
 				<input type="text" class="form-control" name="serial_no" ng-model="serial_no" required>
 			</div>
+			<div class="form-group">
+				<label>Course</label>
+				<input type="text" class="form-control" name="course" ng-model="course" required>
+			</div>
 			<input type="submit" class="btn btn-primary" value="Add Student">
 		</form>
 	</div>
@@ -30,6 +34,7 @@
 						<th>Serial No</th>
 						<th>Name</th>
 						<th>Matric No</th>
+						<th>Course</th>
 						<th>IC No</th>
 						<th>&nbsp;</th>
 					</tr>
@@ -39,6 +44,7 @@
 						<td>{{ student.serial_no }}</td>
 						<td>{{ student.fullname }}</td>
 						<td>{{ student.matrix_no }}</td>
+						<td>{{ student.course }}</td>
 						<td>{{ student.ic }}</td>
 						<td>
 							<button ng-click="showModal('student', $index)" class="btn btn-default btn-xs">Edit</button>

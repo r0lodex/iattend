@@ -5,7 +5,7 @@ function studentCreate($input){
 	$b = (isset($input['ic'])) ? $input['ic']:null;
 	$c = (isset($input['matrix_no'])) ? $input['matrix_no']:null;
 	$d = (isset($input['serial_no'])) ? $input['serial_no']:null;
-	$d = (isset($input['course'])) ? $input['course']:null;
+	$e = (isset($input['course'])) ? $input['course']:null;
 
 	// create an array of data
 	$data = array(

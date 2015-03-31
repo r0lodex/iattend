@@ -54,7 +54,7 @@ function eventUpdate($input){
 		'e' => $input['time'],
 		'f' => $input['id']
 	);
-	// adjustmen
+	// adjustment
 	$data['e'] = date('1970-01-01 H:i:s',strtotime($data['e'])-28800);
 
 	// prepare database query

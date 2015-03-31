@@ -3,11 +3,12 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		console.log('App Started!')
 
 		// Default fields for Events
-		$rootScope.sfields = function(ic, serial, name, matrix){
+		$rootScope.sfields = function(ic, serial, name, matrix, course){
 			this.ic = ic;
 			this.serial_no = serial;
 			this.fullname = name;
 			this.matrix_no = matrix;
+			this.course = course;
 			this.student = true;
 		}
 		// Default fields for Events
@@ -124,7 +125,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		});
 
 		$scope.createStudent = function() {
-			$scope.studentfields = new $rootScope.sfields($scope.ic, $scope.serial_no, $scope.fullname, $scope.matrix_no);
+			$scope.studentfields = new $rootScope.sfields($scope.ic, $scope.serial_no, $scope.fullname, $scope.matrix_no, $scope.course);
 
 			console.log($scope.studentfields)
 
