@@ -37,9 +37,6 @@
 				</div>
 			</div>
 		</nav>
-		<div id="dates">
-			<input type="text">
-		</div>
 		<div class="container-fluid views" ng-view></div>
 	</div>
 
