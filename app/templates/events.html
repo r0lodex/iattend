@@ -1,45 +1,25 @@
-<h1><span class="glyphicon glyphicon-calendar"></span> Events</h1>
+<h1><span class="glyphicon glyphicon-calendar"></span> Events <a class="btn btn-primary btn-sm" ng-click="eventModal()">+ Add New Event</a></h1>
 <hr>
 <div class="row">
-	<div class="col-md-4">
-		<form name="eventForm" ng-submit="addEvent()" class="bg-success" style="padding: 20px; border-radius:5px;">
-			<div class="form-group">
-				<label>Event Name</label>
-				<input class="form-control" name="name" ng-model="name" required>
+	<div class="col-md-4" ng-repeat="event in eventList">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4><strong class="text-capitalize">{{ event.name }}</strong><br>
+				<small class="small text-muted">{{ event.descp }}</small>
+				</h4>
 			</div>
-			<div class="form-group">
-				<label>Event Description</label>
-				<input class="form-control" name="descp" ng-model="descp" required>
-			</div>
-			<div class="form-group">
-				<label>Venue</label>
-				<input class="form-control" name="venue" ng-model="venue" required>
-			</div>
-			<div class="form-group" id="dates">
-				<label>Event Date (dd/mm/yyyy)</label>
-				<input class="form-control" name="day" ng-model="day" required>
-			</div>
-			<div class="form-group">
-				<label>Event Time (hh:mm:ss)</label>
-				<input type="text" class="form-control" name="time" ng-model="time" required>
-			</div>
-			<input type="submit" class="btn btn-primary" value="Add Event" required>
-		</form>
-	</div>
-	<div class="col-md-8">
-		<h4>Event Listing</h4>
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="event in eventList" >
-				<h4 class="text-capitalize">{{ event.name }}</h4>
-				<p><small class="text-muted">{{ event.descp }}</small></p>
-				<p>
+			<div class="panel-body">
+				<p class="small">
 					<strong>Venue</strong> &raquo; {{ event.venue }}<br>
 					<strong>Date &amp; Time</strong> &raquo; {{ event.day }} @ {{ event.time }}<br>
 				</p>
-				<button class="pull-right btn btn-info btn-xs" ng-click="attendanceModal(event)">Attendance &rarr;</button>
-				<button class="btn btn-default btn-xs" ng-click="showModal('event', $index)">Edit</button>
-				<button class="btn btn-danger btn-xs" ng-click="delete($index)">Delete</button>
-			</li>
-		</ul>
+				<button class="btn btn-success btn-xs" ng-click="attendanceModal(event)">Attendance</button>
+				<div class="pull-right">
+					<button class="btn btn-default btn-xs">Report</button>
+					<button class="btn btn-default btn-xs" ng-click="showModal('event', $index)"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button class="btn btn-default btn-xs" ng-click="delete($index)"><span class="glyphicon glyphicon-trash"></span></button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
