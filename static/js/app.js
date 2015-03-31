@@ -194,11 +194,12 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 			$http.post('../php/router.php', $scope.eventfields)
 				.success(function(res) {
-					alert('Event Added');
-					console.log(res);
 					$http.get('../php/router.php?event=1')
 						.success(function(response) {
+							console.log(response)
 							$scope.eventList = response;
+							$('#closeModal').trigger('click');
+							alert('Event successfully added')
 						}
 					);
 				}
