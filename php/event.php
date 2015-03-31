@@ -9,7 +9,7 @@ function eventCreate($input){
 		'e' => $input['time']
 	);
 	// adjustment
-	//$data['e'] = 
+	$data['e'] = date('1970-01-01 H:i:s',strtotime($data['e'])-28800);
 
 	// prepare database query
 	$sql = "INSERT INTO event (name,descp,venue,day,time) vALUES (:a,:b,:c,:d,:e)";
@@ -54,6 +54,8 @@ function eventUpdate($input){
 		'e' => $input['time'],
 		'f' => $input['id']
 	);
+	// adjustmen
+	$data['e'] = date('1970-01-01 H:i:s',strtotime($data['e'])-28800);
 
 	// prepare database query
 	$sql = "UPDATE event SET name=IFNULL(:a,name), descp=IFNULL(:b,name), venue=IFNULL(:c,name), day=IFNULL(:d,day), time=IFNULL(:e,time) WHERE id=:f";
