@@ -44,26 +44,13 @@
 		</div>
 
 		<hr>
+		<h3 class="text-center">Upcoming Events</h3>
+		<hr>
 
-		<div class="">
-			<h3><span class="glyphicon glyphicon-list-alt"></span> Event Listing</h3>
-			<div class="well table-responsive">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Event</th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Venue</th>
-						</tr>
-					</thead>
-					<tbody>
-					<!-- BEGIN PUBLIC EVENT LISTING -->
-						<?php include('php/database.php'); include('php/event.php'); eventList(); ?>
-					<!-- END PUBLIC EVENT LISTING -->
-					</tbody>
-				</table>
-			</div>
+		<div class="row">
+			<!-- BEGIN PUBLIC EVENT LISTING -->
+				<?php include('php/database.php'); include('php/event.php'); eventList(); ?>
+			<!-- END PUBLIC EVENT LISTING -->
 		</div>
 	</div>
 

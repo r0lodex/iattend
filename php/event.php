@@ -69,11 +69,21 @@ function eventList(){
 	$buff = '';
 	$res = eventRead('ret');
 	foreach($res as $row){
-		$buff.="<tr>
-		<td><p><strong>".$row['name']."</strong><br><small class=\"text-muted\">".$row['descp']."</small></p></td>
-		<td><code class=\"bg-success text-info\">".$row['day']."</code></td>
-		<td><code class=\"bg-info text-success\">".$row['time']."</code></td>
-		<td>".$row['venue']."</td></tr>";
+		$buff.='<div class="col-md-4">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4><strong class="text-capitalize">'.$row["name"].'</strong><br>
+							<small class="small text-muted">'.$row["descp"].'</small>
+							</h4>
+						</div>
+						<div class="panel-body">
+							<p class="small">
+								<strong>Venue</strong> &raquo; '.$row["venue"].'<br>
+								<strong>Date &amp; Time</strong> &raquo; '.$row["day"].' @ '.$row["time"].'<br>
+							</p>
+						</div>
+					</div>
+				</div>';
 	}
 	echo $buff;
 }
