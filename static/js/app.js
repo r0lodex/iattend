@@ -36,10 +36,6 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				}
 			}).then(function(modal) {
 				modal.element.modal();
-				$('#dates input').datepicker({
-			        format: 'dd/mm/yyyy',
-			        autoclose: true
-			    });
 			})
 		};
 
@@ -49,11 +45,6 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 				controller: "eventsController",
 			}).then(function(modal) {
 				modal.element.modal();
-
-				$('#dates input').datepicker({
-			        format: 'dd/mm/yyyy',
-			        autoclose: true
-			    });
 			})
 		}
 	})
@@ -312,5 +303,11 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		}
 	});
 
+$('body').on('focus', '.dates input', function() {
+	$(this).datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true
+    });
+})
 
 
