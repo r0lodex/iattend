@@ -43,10 +43,19 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			})
 		};
 
-		$rootScope.afields = function(eventID, serialNo) {
-			this.eventid = eventID;
-			this.serial_no = serialNo;
-			this.attendance = true;
+		$rootScope.eventModal = function(record) {
+			ModalService.showModal({
+				templateUrl: 'templates/modal_event.html',
+				controller: "eventsController",
+				inputs: { currentRecord: record }
+			}).then(function(modal) {
+				modal.element.modal();
+
+				$('#dates input').datepicker({
+			        format: 'dd/mm/yyyy',
+			        autoclose: true
+			    });
+			})
 		}
 	})
 /*
