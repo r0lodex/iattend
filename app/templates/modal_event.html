@@ -1,0 +1,35 @@
+<div class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<h3 style="margin-top:10px" class="text-center">Add New Event</h3>
+				<form name="eventForm" ng-submit="addEvent()">
+					<div class="form-group">
+						<label>Title</label>
+						<input class="form-control" name="name" ng-model="name" required placeholder="Event Title">
+					</div>
+					<div class="form-group">
+						<label>Description</label>
+						<textarea class="form-control" name="descp" ng-model="descp" required placeholder="Event Description"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Venue</label>
+						<input class="form-control" name="venue" ng-model="venue" required placeholder="e.g Hall 1">
+					</div>
+					<div class="form-group" id="dates">
+						<label>Date</label>
+						<input class="form-control" name="day" ng-model="day" required placeholder="Click to select date.">
+					</div>
+					<div class="form-group">
+						<label>Time (hh:mm:ss)</label>
+						<input type="text" class="form-control" name="time" ng-model="time" required placeholder="e.g 07:30:00 for 7.30AM">
+					</div>
+					<div class="text-center">
+						<input type="submit" class="btn btn-primary" value="Add Event" required>
+						<button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal" class="btn">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
