@@ -238,7 +238,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 
 // -------------------------
 // MODAL
-	.controller('modalController', function($scope, $http, EventsData, StudentsData, currentRecord, type) {
+	.controller('modalController', function($scope, $http, AdminData, EventsData, StudentsData, currentRecord, type) {
 		$scope.currS = {};
 		$scope.type = type;
 
@@ -249,6 +249,12 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		}
 		if(type == 'event') {
 			EventsData.then(function(res) {
+				$scope.currS = res[currentRecord];
+			})
+		}
+		if(type == 'admin') {
+			AdminData.then(function(res) {
+console.log(JSON.stringify(res[currentRecord]))
 				$scope.currS = res[currentRecord];
 			})
 		}
@@ -269,6 +275,17 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			$http.post('../php/router.php', data)
 				.success(function(res) {
 					alert('Event data successfully updated');
+					console.log(data)
+					console.log(res)
+				}
+			);
+		}
+
+		$scope.updateAdmin = function(data) {
+			data.admin = true;
+			$http.post('../php/router.php', data)
+				.success(function(res) {
+					alert('Admin data successfully updated');
 					console.log(data)
 					console.log(res)
 				}
