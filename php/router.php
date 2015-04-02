@@ -61,6 +61,23 @@ if( isset($post['attendance']) ) {
 	}
 }
 
+//process admin req
+if( isset($_GET['admin']) ){
+	include 'admin.php';
+	adminRead($_GET);
+}
+if( isset($post['admin']) ) {
+	include 'admin.php';
+	if(isset($post['id'])) {
+		if(isset($post['delete'])) {
+			adminDelete($post);
+		}else{
+			adminUpdate($post);
+		}
+	}else{
+		adminCreate($post);
+	}
+}
 
 //system access check
 if(isset($_POST['login'])){
@@ -68,7 +85,21 @@ if(isset($_POST['login'])){
 	$password = $_POST['password'];
 	if($username == 'admin' && $password == 'admin'){
 		$_SESSION['authorized'] = true;
+		$_SESSION['superuser'] = true;
 		header('Location: ../app');
+	}else{
+		$sql = "SELECT * FROM user WHERE username=:a && password=:b";
+		$data = array('a'=>$username,'b'=>$password);
+		$dbc = Database();
+		$qry = $dbc->prepare($sql);
+		$qry->execute($data);
+		$row = $qry->fetch(PDO::FETCH_ASSOC);
+		$dbc = null;
+
+		if($row){
+			$_SESSION['authorized'] = true;
+			header('Location: ../app');
+		}
 	}
 }
 if(isset($_GET['logout'])) {
