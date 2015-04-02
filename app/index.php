@@ -51,7 +51,7 @@
 	<script src="../static/vendor/angularModalService.js"></script>
 	<script src="../static/vendor/bootstrap-datepicker.js"></script>
 	<script src="../static/js/app.js"></script>
-	<?php if(isset($_SESSION['superuser']) { ?>
+	<?php if(isset($_SESSION['superuser'])) { ?>
 	<script src="../static/js/superuser.js"></script>
 	<?php } ?>
 </body>
