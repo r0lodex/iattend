@@ -2,6 +2,7 @@
 	// Access Control
 	if(!isset($_SESSION)) { session_start(); }
 	if( isset($_SESSION['authorized']) ) { header('Location: app'); }
+	if(!isset($_SESSION['attr'])) {$_SESSION['attr'] = 'hidden';}
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,6 @@
 				<div class="col-md-4" style="background: #FFF; padding: 20px; border-radius:5px; box-shadow: 0 1px 2px rgba(0,0,0,.2);">
 				<!-- BEGIN LOGIN FORM -->
 					<h4>i-Attend Login</h4>
-					<p class="text-danger hidden">Invalid username/password</p>
 					<form name="login" action="php/router.php" method="POST">
 						<input type="hidden" value="1" name="login"/>
 						<div class="form-group">
@@ -37,6 +37,7 @@
 								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 								<input type="password" name="password" class="form-control" placeholder="Password">
 							</div>
+							<small class="text-danger" <?php echo $_SESSION['attr']; ?> >Invalid username/password</small>
 						</div>
 						<input type="submit" class="btn btn-default btn-sm" value="LOGIN &raquo;">
 					</form>
