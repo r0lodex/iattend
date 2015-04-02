@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" id="branding"><img src="../static/img/logobnw.svg" /></a>
+					<a class="navbar-brand" id="branding"><img src="../static/img/logo.png" /></a>
 				</div>
 				<div class="collapse navbar-collapse" id="nav">
 					<ul class="nav navbar-nav">
