@@ -55,7 +55,7 @@
 
 		<div class="row">
 			<!-- BEGIN PUBLIC EVENT LISTING -->
-				<?php include('php/database.php'); include('php/event.php'); eventList(); ?>
+				<?php include 'php/database.php'; include 'php/event.php'; eventList(); ?>
 			<!-- END PUBLIC EVENT LISTING -->
 		</div>
 	</div>
