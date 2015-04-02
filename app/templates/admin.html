@@ -1,28 +1,37 @@
-<h1><span class="glyphicon glyphicon-user"></span> Administrators <a class="btn btn-primary btn-sm" ng-click="studentModal()">+ Add</a></h1>
+<h1><span class="glyphicon glyphicon-eye-open"></span> Administrators <a class="btn btn-primary btn-sm" ng-click="adminModal()">+ Add</a></h1>
 <hr>
-<div class="table-responsive">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone No</th>
-				<th>&nbsp;</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="admin in adminList">
-				<td>{{ admin.fullname }}</td>
-				<td>{{ admin.email }}</td>
-				<td>{{ admin.phone }}</td>
-				<td>
-					<div class="text-right">
-						<button ng-click="showModal('admin', $index)" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
-						<button ng-click="delete($index)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+<div class="row">
+	<div class="col-md-8">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Login</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone No</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="admin in adminList">
+						<td>{{ admin.username }}</td>
+						<td>{{ admin.fullname }}</td>
+						<td>{{ admin.email }}</td>
+						<td>{{ admin.phone }}</td>
+						<td>
+							<div class="text-right">
+								<button ng-click="showModal('admin', $index)" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+								<button ng-click="delete($index)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<h4>Some Random Fun <small>(Requires Internet)</small></h4>
+	</div>
 </div>
 </div>
