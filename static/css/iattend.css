@@ -19,3 +19,16 @@
 	height: 80px;
 	overflow: auto;
 }
+.jumbotron {
+	background: url(../img/white_wall.png);
+}
+
+#jumbotron-img img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+#team h4 {
+	font-size: 1.1em;
+}
+#team p strong { color: #888; }
