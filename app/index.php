@@ -30,6 +30,7 @@
 					<ul class="nav navbar-nav">
 						<li ng-class="{active:isActive('/events')}"><a href="#/events"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
 						<li ng-class="{active:isActive('/students')}"><a href="#/students"><span class="glyphicon glyphicon-user"></span> Student</a></li>
+						<li ng-class="{active:isActive('/admin')}"><a href="#/admin"><span class="glyphicon glyphicon-eye-open"></span> Administrators</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="../php/router.php?logout=1">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
@@ -48,5 +49,6 @@
 	<script src="../static/vendor/angularModalService.js"></script>
 	<script src="../static/vendor/bootstrap-datepicker.js"></script>
 	<script src="../static/js/app.js"></script>
+	<script src="../static/js/superuser.js"></script>
 </body>
 </html>
