@@ -89,6 +89,7 @@ if(isset($_POST['login'])){
 			$_SESSION['superuser'] = true;
 			header('Location: ../app');
 		}else{
+			$_SESSION['attr'] = '';
 			header('Location: ../');
 		}
 	}else{
@@ -104,6 +105,7 @@ if(isset($_POST['login'])){
 			$_SESSION['authorized'] = true;
 			header('Location: ../app');
 		}else{
+			$_SESSION['attr'] = '';
 			header('Location: ../');
 		}
 	}
