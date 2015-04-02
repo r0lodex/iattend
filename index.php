@@ -18,8 +18,9 @@
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-md-8">
-					<h1 style="margin-top:0">Hello, World!</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eius veritatis, explicabo magnam itaque at ab nostrum distinctio impedit dolorum dolore ratione repellendus, architecto vitae. Veritatis omnis a sapiente voluptates.</p>
+					<h1 style="margin-top:0">The Fastest Attendance System</h1>
+					<p><strong class="text-info"><i><span class="text-danger">i</span>-Attend</i></strong>, an Event Attendance system by PMJ Students.</p>
+					<a href="about.php" class="btn btn-primary">Get To Know The Team &rarr;</a>
 				</div>
 				<div class="col-md-4" style="background: #FFF; padding: 20px; border-radius:5px; box-shadow: 0 1px 2px rgba(0,0,0,.2);">
 				<!-- BEGIN LOGIN FORM -->
@@ -45,9 +46,11 @@
 				</div>
 			</div>
 		</div>
-
+		<p class="lead text-center text-muted">
+			The system has been designed by humble PMJ Students which are still learning how to HTML, Javascript, and PHP, and probably some MySQL as well. Probably in 2-3 years of coding will they understand the power of <strong>Web Development.</strong>
+		</p>
 		<hr>
-		<h3 class="text-center"><span class="glyphicon glyphicon-arrow-down text-muted small"></span> UPCOMING EVENTS <span class="glyphicon glyphicon-arrow-down text-muted small"></span></h3>
+		<h3 class="text-center"><span class="glyphicon glyphicon-star text-muted small"></span> UPCOMING EVENTS <span class="glyphicon glyphicon-star text-muted small"></span></h3>
 		<hr>
 
 		<div class="row">
