@@ -26,6 +26,8 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 			this.serial_no = serialNo;
 			this.attendance = true;
 		};
+
+		// Modals
 		$rootScope.showModal = function(type, record) {
 			ModalService.showModal({
 				templateUrl: 'templates/modal_editing.html',
@@ -240,7 +242,7 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		$scope.currS = {};
 		$scope.type = type;
 
-		if(type === 'student') {
+		if(type == 'student') {
 			StudentsData.then(function(res) {
 				$scope.currS = res[currentRecord];
 			});
