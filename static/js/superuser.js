@@ -77,15 +77,25 @@ angular.module('iattend')
 		$scope.lookup = function(query) {
 
 			$scope.show = false;
+			$scope.searching = false;
+			$scope.noresult = false;
 
 			if ($.trim(query) != '') {
+				$scope.searching = true;
 				$http.get('../php/router.php?lookup='+query)
 					.then(function(res) {
 						if (res.data.length > 0) {
+							$('#searching').hide();
 							$scope.show = true;
+							$scope.searching = false;
 							$scope.lookupResult = res.data;
 						} else {
 							$scope.show = false;
+							$scope.searching = false;
+							$scope.noresult = true;
+							setTimeout(function(){
+								$scope.noresult = false;
+							}, 10);
 						}
 					})
 			}
