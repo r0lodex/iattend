@@ -254,7 +254,6 @@ var iattend = angular.module('iattend', ['ngRoute', 'angularModalService'])
 		}
 		if(type == 'admin') {
 			AdminData.then(function(res) {
-console.log(JSON.stringify(res[currentRecord]))
 				$scope.currS = res[currentRecord];
 			})
 		}

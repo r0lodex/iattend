@@ -72,4 +72,22 @@ angular.module('iattend')
 				);
 			}
 		}
+
+		$scope.lookupResult = []
+		$scope.lookup = function(query) {
+
+			$scope.show = false;
+
+			if ($.trim(query) != '') {
+				$http.get('../php/router.php?lookup='+query)
+					.then(function(res) {
+						if (res.data.length > 0) {
+							$scope.show = true;
+							$scope.lookupResult = res.data;
+						} else {
+							$scope.show = false;
+						}
+					})
+			}
+		}
 	})

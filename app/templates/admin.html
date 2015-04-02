@@ -31,7 +31,26 @@
 		</div>
 	</div>
 	<div class="col-md-4">
-		<h4>Some Random Fun <small>(Requires Internet)</small></h4>
+		<label><small>Acronym Lookup</small></label>
+		<div class="form-inline" style="margin-bottom:10px;">
+			<div class="form-group" style="width:100%;">
+				<input type="text" class="form-control input-sm" placeholder="e.g TEST" ng-model="query" style="width:80%;">
+				<input type="submit" class="btn btn-default btn-sm" value="Lookup!" ng-click="lookup(query)">
+			</div>
+		</div>
+		<div ng-show="show">
+			<ul class="list-group" ng-repeat="result in lookupResult">
+				<li class="list-group-item" ng-repeat="def in result.lfs">
+					<h5 class="list-group-item-heading">{{ def.lf }} <small>({{ def.freq }} points)</small></h5>
+					<small>Invented: {{ def.since }}</small><br>
+				</li>
+			</ul>
+		</div>
+		<div ng-hide="show">
+			<div class="alert alert-warning alert-sm">
+				...
+			</div>
+		</div>
 	</div>
 </div>
 </div>
