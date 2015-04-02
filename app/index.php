@@ -30,7 +30,7 @@
 					<ul class="nav navbar-nav">
 						<li ng-class="{active:isActive('/events')}"><a href="#/events"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
 						<li ng-class="{active:isActive('/students')}"><a href="#/students"><span class="glyphicon glyphicon-user"></span> Student</a></li>
-						<?php if(isset($_SESSION['superuser']) { ?>
+						<?php if(isset($_SESSION['superuser'])) { ?>
 						<li ng-class="{active:isActive('/admin')}"><a href="#/admin"><span class="glyphicon glyphicon-eye-open"></span> Administrators</a></li>
 						<?php } ?>
 					</ul>
