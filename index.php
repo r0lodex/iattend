@@ -8,13 +8,13 @@
 <html>
 <head>
 	<title>i-Attend System</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="static/css/iattend.css">
+	<?php include 'static/includes/header.template'; ?>
 </head>
 <body>
 	<div class="container">
-		<hr>
+
+		<?php $active = 'home'; include 'static/includes/navbar.template'; ?>
+
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-md-8">
