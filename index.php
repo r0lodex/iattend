@@ -37,7 +37,7 @@
 								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 								<input type="password" name="password" class="form-control" placeholder="Password">
 							</div>
-							<small class="text-danger" <?php echo $_SESSION['attr']; ?> >Invalid username/password</small>
+							<br><small class="text-danger" <?php echo $_SESSION['attr']; ?> >Invalid username/password. Please try again. <?php unset($_SESSION); session_destroy(); ?></small>
 						</div>
 						<input type="submit" class="btn btn-default btn-sm" value="LOGIN &raquo;">
 					</form>
