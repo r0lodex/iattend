@@ -83,10 +83,14 @@ if( isset($post['admin']) ) {
 if(isset($_POST['login'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	if($username == 'admin' && $password == 'admin'){
-		$_SESSION['authorized'] = true;
-		$_SESSION['superuser'] = true;
-		header('Location: ../app');
+	if($username == 'admin'){
+		if($username == 'admin' && $password == 'admin'){
+			$_SESSION['authorized'] = true;
+			$_SESSION['superuser'] = true;
+			header('Location: ../app');
+		}else{
+			header('Location: ../');
+		}
 	}else{
 		$sql = "SELECT * FROM user WHERE username=:a && password=:b";
 		$data = array('a'=>$username,'b'=>$password);
@@ -99,6 +103,8 @@ if(isset($_POST['login'])){
 		if($row){
 			$_SESSION['authorized'] = true;
 			header('Location: ../app');
+		}else{
+			header('Location: ../');
 		}
 	}
 }
