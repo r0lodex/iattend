@@ -113,5 +113,12 @@ if(isset($_GET['logout'])) {
 	session_destroy();
 	header('Location: ../');
 }
+if(isset($_GET['lookup'])) {
+	$url = 'http://www.nactem.ac.uk/software/acromine/dictionary.py?sf=';
+	$qry = $url.$_GET['lookup'];
+	$res = file_get_contents($qry);
+	echo $res;
+}
+
 
 exit;
