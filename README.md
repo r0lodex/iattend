@@ -6,6 +6,7 @@ Demo is available at http://mrjunior.my/iattend
 Username & password is admin.
 
 **Technologies**
+
 1. Angularjs
 2. PHP
 3. MySQL
